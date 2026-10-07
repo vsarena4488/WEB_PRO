@@ -1,0 +1,84 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Public.Master.cs" Inherits="MasterPages_Public" %>
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Tour Booking</title>
+    <link href="~/Styles/site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/public.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/responsive.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <!-- Public Navigation Header -->
+        <header class="public-header">
+            <div class="container header-inner">
+                <!-- Logo -->
+                <a href='<%= ResolveUrl("~/Public/Home.aspx") %>' class="brand-logo">
+                    <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 6h-3V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H5c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-9-2h4v2h-4V4zm9 15H5V8h14v11z"/>
+                    </svg>
+                    <span>Tour Booking</span>
+                </a>
+
+                <!-- Nav Links -->
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href='<%= ResolveUrl("~/Public/Home.aspx") %>' class='nav-link '>Home</a></li>
+                        <li><a href='<%= ResolveUrl("~/Public/Home.aspx#tours") %>' class='nav-link'>Tours</a></li>
+                        <li><a href='<%= ResolveUrl("~/Public/Home.aspx#offers") %>' class='nav-link'>Offers</a></li>
+                        <li><a href='<%= ResolveUrl("~/Public/About.aspx") %>' class='nav-link <%= IsActive("About.aspx") %>'>About Us</a></li>
+                        <li><a href='<%= ResolveUrl("~/Public/Home.aspx#contact") %>' class='nav-link'>Contact Us</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Auth Buttons -->
+                <div class="header-actions">
+                    <a href='<%= ResolveUrl("~/Public/Login.aspx") %>' class="btn btn-outline">Login</a>
+                    <a href='<%= ResolveUrl("~/Public/Register.aspx") %>' class="btn btn-primary">Register</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Body Content -->
+        <main>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+        </main>
+
+        <!-- Public Dark Footer -->
+        <footer class="public-footer">
+            <div class="container">
+                <div class="footer-top">
+                    <a href='<%= ResolveUrl("~/Public/Home.aspx") %>' class="footer-brand">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19 6h-3V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H5c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-9-2h4v2h-4V4zm9 15H5V8h14v11z"/>
+                        </svg>
+                        <span>TravelGo</span>
+                    </a>
+                    <p class="footer-slogan">Explore the world with us and make your journey memorable.</p>
+                    <div class="social-links">
+                        <a href="javascript:void(0)" class="social-btn" aria-label="Facebook">
+                            <svg class="icon-svg-fill" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        </a>
+                        <a href="javascript:void(0)" class="social-btn" aria-label="X (Twitter)">
+                            <svg class="icon-svg-fill" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="javascript:void(0)" class="social-btn" aria-label="Instagram">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                        <a href="javascript:void(0)" class="social-btn" aria-label="LinkedIn">
+                            <svg class="icon-svg-fill" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    &copy; 2024 TravelGo. All Rights Reserved.
+                </div>
+            </div>
+        </footer>
+    </form>
+    <script src='<%= ResolveUrl("~/Scripts/site.js") %>'></script>
+</body>
+</html>

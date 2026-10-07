@@ -1,0 +1,256 @@
+/* ==========================================================================
+   RESPONSIVE.CSS - Comprehensive Mobile & Tablet Adaptations
+   ========================================================================== */
+
+/* Large Screens (1440px - 1920px) */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+/* Medium Laptops & Desktops (1024px - 1366px) */
+@media (max-width: 1200px) {
+  .tours-grid-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .tours-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .kpi-grid-5 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablets (768px - 1023px) */
+@media (max-width: 1023px) {
+  /* App Shell & Sidebar */
+  .app-sidebar {
+    transform: translateX(-100%);
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .app-sidebar.show-mobile-sidebar {
+    transform: translateX(0);
+  }
+  
+  .app-main {
+    margin-left: 0;
+  }
+  
+  .menu-toggle-btn {
+    display: inline-flex;
+  }
+  
+  /* Tour Details */
+  .tour-details-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .sticky-book-card {
+    position: static;
+  }
+  
+  /* Checkout & Payment */
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Admin Profile */
+  .admin-profile-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Home split cards */
+  .split-cards-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .offers-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-hero-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .features-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .stats-card-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile Devices (<= 767px) */
+@media (max-width: 767px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  .content-body {
+    padding: 20px 16px;
+  }
+  
+  .app-topbar {
+    padding: 0 16px;
+  }
+  
+  /* Public Header */
+  .public-header {
+    height: auto;
+    padding: 12px 0;
+  }
+  
+  .public-header .header-inner {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .nav-links {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    gap: 16px;
+  }
+  
+  .nav-link.active::after {
+    bottom: -6px;
+  }
+  
+  .hero-title {
+    font-size: 30px;
+  }
+  
+  .hero-subtitle {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  
+  /* Home Search Bar */
+  .search-bar-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-field {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding-right: 0;
+    padding-bottom: 8px;
+  }
+  
+  .tours-grid-4, .tours-grid-3 {
+    grid-template-columns: 1fr;
+  }
+  
+  .kpi-grid-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .browse-filters-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .meta-pills-row {
+    flex-direction: column;
+  }
+  
+  .inclusions-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-card-strip {
+    grid-template-columns: 1fr;
+  }
+  
+  .features-grid-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .offer-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .offer-card-img {
+    width: 100%;
+    height: 160px;
+  }
+  
+  .offer-badge {
+    text-align: left;
+  }
+  
+  .booking-item-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .booking-item-thumb {
+    width: 100%;
+    height: 160px;
+  }
+  
+  .booking-item-actions {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .admin-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .admin-toolbar-left {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .admin-search-box {
+    max-width: none;
+  }
+  
+  .auth-card {
+    padding: 24px 18px;
+  }
+  
+  .auth-header {
+    padding: 16px;
+  }
+  
+  .otp-digit {
+    width: 42px;
+    height: 48px;
+    font-size: 18px;
+  }
+}
+
+/* Small Mobile (<= 480px) */
+@media (max-width: 480px) {
+  .kpi-grid-5 {
+    grid-template-columns: 1fr;
+  }
+  
+  .otp-digit {
+    width: 38px;
+    height: 44px;
+    font-size: 16px;
+  }
+  
+  .otp-inputs-row {
+    gap: 6px;
+  }
+}

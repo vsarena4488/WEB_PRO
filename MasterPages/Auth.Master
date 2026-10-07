@@ -1,0 +1,36 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Auth.Master.cs" Inherits="MasterPages_Auth" %>
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Tour Booking</title>
+    <link href="~/Styles/site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/public.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/responsive.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body class="auth-page-wrapper">
+    <form id="form1" runat="server">
+        <header class="auth-header">
+            <!-- Brand Logo -->
+            <a href='<%= ResolveUrl("~/Public/Home.aspx") %>' class="brand-logo">
+                <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 6h-3V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H5c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-9-2h4v2h-4V4zm9 15H5V8h14v11z"/>
+                </svg>
+                <span>Tour Booking</span>
+            </a>
+
+            <!-- Back Link -->
+            <asp:HyperLink ID="lnkBack" runat="server" NavigateUrl="~/Public/Home.aspx" CssClass="auth-back-link">
+                &larr; Back
+            </asp:HyperLink>
+        </header>
+
+        <div class="auth-content-box">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <script src='<%= ResolveUrl("~/Scripts/site.js") %>'></script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{21B5725A-1BC6-4A14-8E17-91BCDCB06B19}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WEB_PRO</RootNamespace>
+    <AssemblyName>WEB_PRO</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44394</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config" />
+    <Content Include="Admin\AddOffer.aspx" />
+    <Content Include="Admin\AddOffer.aspx.cs" />
+    <Content Include="Admin\AddSchedule.aspx" />
+    <Content Include="Admin\AddSchedule.aspx.cs" />
+    <Content Include="Admin\AddTour.aspx" />
+    <Content Include="Admin\AddTour.aspx.cs" />
+    <Content Include="Admin\Bookings.aspx" />
+    <Content Include="Admin\Bookings.aspx.cs" />
+    <Content Include="Admin\Dashboard.aspx" />
+    <Content Include="Admin\Dashboard.aspx.cs" />
+    <Content Include="Admin\Messages.aspx" />
+    <Content Include="Admin\Messages.aspx.cs" />
+    <Content Include="Admin\Offers.aspx" />
+    <Content Include="Admin\Offers.aspx.cs" />
+    <Content Include="Admin\Profile.aspx" />
+    <Content Include="Admin\Profile.aspx.cs" />
+    <Content Include="Admin\Reviews.aspx" />
+    <Content Include="Admin\Reviews.aspx.cs" />
+    <Content Include="Admin\TourSchedules.aspx" />
+    <Content Include="Admin\TourSchedules.aspx.cs" />
+    <Content Include="Admin\Tours.aspx" />
+    <Content Include="Admin\Tours.aspx.cs" />
+    <Content Include="Admin\Users.aspx" />
+    <Content Include="Admin\Users.aspx.cs" />
+    <Content Include="Assets\images\about-hero.jpg" />
+    <Content Include="Assets\images\andaman.jpg" />
+    <Content Include="Assets\images\bali.jpg" />
+    <Content Include="Assets\images\goa-details.jpg" />
+    <Content Include="Assets\images\goa.jpg" />
+    <Content Include="Assets\images\himalayan-offer.jpg" />
+    <Content Include="Assets\images\himalayan.jpg" />
+    <Content Include="Assets\images\kashmir.jpg" />
+    <Content Include="Assets\images\kerala-card.jpg" />
+    <Content Include="Assets\images\kerala.jpg" />
+    <Content Include="Assets\images\manali.jpg" />
+    <Content Include="Assets\images\page_10_img_6551.jpeg" />
+    <Content Include="Assets\images\page_10_img_6555.jpeg" />
+    <Content Include="Assets\images\page_11_img_20.jpeg" />
+    <Content Include="Assets\images\page_12_img_20.jpeg" />
+    <Content Include="Assets\images\page_13_img_12.jpeg" />
+    <Content Include="Assets\images\page_13_img_20.jpeg" />
+    <Content Include="Assets\images\page_13_img_8.jpeg" />
+    <Content Include="Assets\images\page_14_img_9053.jpeg" />
+    <Content Include="Assets\images\page_14_img_9057.jpeg" />
+    <Content Include="Assets\images\page_14_img_9061.jpeg" />
+    <Content Include="Assets\images\page_15_img_12.jpeg" />
+    <Content Include="Assets\images\page_15_img_20.jpeg" />
+    <Content Include="Assets\images\page_16_img_16.jpeg" />
+    <Content Include="Assets\images\page_16_img_20.jpeg" />
+    <Content Include="Assets\images\page_16_img_4259.jpeg" />
+    <Content Include="Assets\images\page_16_img_4275.jpeg" />
+    <Content Include="Assets\images\page_19_img_20.jpeg" />
+    <Content Include="Assets\images\page_19_img_4267.jpeg" />
+    <Content Include="Assets\images\page_19_img_4271.jpeg" />
+    <Content Include="Assets\images\page_1_img_12.jpeg" />
+    <Content Include="Assets\images\page_1_img_16.jpeg" />
+    <Content Include="Assets\images\page_1_img_20.jpeg" />
+    <Content Include="Assets\images\page_1_img_8.jpeg" />
+    <Content Include="Assets\images\page_25_img_12.jpeg" />
+    <Content Include="Assets\images\page_25_img_20.jpeg" />
+    <Content Include="Assets\images\page_25_img_4271.jpeg" />
+    <Content Include="Assets\images\page_2_img_1945.jpeg" />
+    <Content Include="Assets\images\page_8_img_4247.jpeg" />
+    <Content Include="Assets\images\page_8_img_4251.jpeg" />
+    <Content Include="Assets\images\page_9_img_20.jpeg" />
+    <Content Include="Assets\images\page_9_img_4259.jpeg" />
+    <Content Include="Assets\images\page_9_img_4263.jpeg" />
+    <Content Include="Assets\images\page_9_img_4267.jpeg" />
+    <Content Include="Assets\images\page_9_img_4271.jpeg" />
+    <Content Include="Assets\images\page_9_img_4275.jpeg" />
+    <Content Include="Assets\images\paris.jpg" />
+    <Content Include="Assets\images\rajasthan.jpg" />
+    <Content Include="Assets\images\summer-special.jpg" />
+    <Content Include="Assets\images\swiss-alps.jpg" />
+    <Content Include="Assets\images\taj-mahal.jpg" />
+    <Content Include="Default.aspx" />
+    <Content Include="Images\about-hero.jpg" />
+    <Content Include="Images\andaman.jpg" />
+    <Content Include="Images\bali.jpg" />
+    <Content Include="Images\goa-details.jpg" />
+    <Content Include="Images\goa.jpg" />
+    <Content Include="Images\himalayan-offer.jpg" />
+    <Content Include="Images\himalayan.jpg" />
+    <Content Include="Images\kashmir.jpg" />
+    <Content Include="Images\kerala-card.jpg" />
+    <Content Include="Images\kerala.jpg" />
+    <Content Include="Images\manali.jpg" />
+    <Content Include="Images\paris.jpg" />
+    <Content Include="Images\rajasthan.jpg" />
+    <Content Include="Images\summer-special.jpg" />
+    <Content Include="Images\swiss-alps.jpg" />
+    <Content Include="Images\taj-mahal.jpg" />
+    <Content Include="MasterPages\Admin.Master" />
+    <Content Include="MasterPages\Admin.Master.cs" />
+    <Content Include="MasterPages\Auth.Master" />
+    <Content Include="MasterPages\Auth.Master.cs" />
+    <Content Include="MasterPages\Public.Master" />
+    <Content Include="MasterPages\Public.Master.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="MasterPages\User.Master" />
+    <Content Include="MasterPages\User.Master.cs" />
+    <Content Include="Public\About.aspx" />
+    <Content Include="Public\About.aspx.cs" />
+    <Content Include="Public\ChangePassword.aspx" />
+    <Content Include="Public\ChangePassword.aspx.cs" />
+    <Content Include="Public\ForgotPassword.aspx" />
+    <Content Include="Public\ForgotPassword.aspx.cs" />
+    <Content Include="Public\Home.aspx" />
+    <Content Include="Public\Home.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Public\Login.aspx" />
+    <Content Include="Public\Login.aspx.cs" />
+    <Content Include="Public\Offers.aspx" />
+    <Content Include="Public\Register.aspx" />
+    <Content Include="Public\Register.aspx.cs" />
+    <Content Include="Public\Tours.aspx" />
+    <Content Include="Public\VerifyAccount.aspx" />
+    <Content Include="Public\VerifyAccount.aspx.cs" />
+    <Content Include="Scripts\site.js" />
+    <Content Include="Styles\admin.css" />
+    <Content Include="Styles\public.css" />
+    <Content Include="Styles\responsive.css" />
+    <Content Include="Styles\site.css" />
+    <Content Include="Styles\user.css" />
+    <Content Include="User\Booking.aspx" />
+    <Content Include="User\Booking.aspx.cs" />
+    <Content Include="User\BrowseTours.aspx" />
+    <Content Include="User\BrowseTours.aspx.cs" />
+    <Content Include="User\Dashboard.aspx" />
+    <Content Include="User\Dashboard.aspx.cs" />
+    <Content Include="User\MyBookings.aspx" />
+    <Content Include="User\MyBookings.aspx.cs" />
+    <Content Include="User\MyReviews.aspx" />
+    <Content Include="User\MyReviews.aspx.cs" />
+    <Content Include="User\Offers.aspx" />
+    <Content Include="User\Offers.aspx.cs" />
+    <Content Include="User\Payment.aspx" />
+    <Content Include="User\Payment.aspx.cs" />
+    <Content Include="User\Profile.aspx" />
+    <Content Include="User\Profile.aspx.cs" />
+    <Content Include="User\TourDetails.aspx" />
+    <Content Include="User\TourDetails.aspx.cs" />
+    <Content Include="User\Wishlist.aspx" />
+    <Content Include="User\Wishlist.aspx.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59303</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44394/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+</Project>

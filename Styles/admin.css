@@ -1,0 +1,226 @@
+/* ==========================================================================
+   ADMIN.CSS - Admin Panel Specific Styling
+   ========================================================================== */
+
+/* Admin Filter Toolbars */
+.admin-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.admin-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 300px;
+}
+
+.admin-search-box {
+  position: relative;
+  flex: 1;
+  max-width: 360px;
+}
+
+.admin-search-box input {
+  padding-left: 36px;
+}
+
+.admin-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-light);
+  width: 16px;
+  height: 16px;
+}
+
+.admin-select-filter {
+  min-width: 150px;
+}
+
+.admin-table-thumb {
+  width: 44px;
+  height: 36px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.admin-user-avatar-initials {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.admin-table-item-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-table-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* File Upload Dropzone */
+.upload-dropzone {
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 36px 20px;
+  text-align: center;
+  background-color: #FAFCFE;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.upload-dropzone:hover {
+  border-color: var(--primary);
+  background-color: var(--primary-light);
+}
+
+.upload-dropzone-icon {
+  width: 40px;
+  height: 40px;
+  color: var(--text-muted);
+  margin: 0 auto 12px;
+}
+
+.upload-dropzone-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin-bottom: 4px;
+}
+
+.upload-dropzone-hint {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+.upload-dropzone input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+/* Star Rating Display */
+.star-rating {
+  color: #F59E0B;
+  display: inline-flex;
+  gap: 2px;
+  font-size: 14px;
+}
+
+.star-rating .star-empty {
+  color: #E2E8F0;
+}
+
+/* Admin Profile Page */
+.admin-profile-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 32px;
+}
+
+.admin-profile-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 36px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.admin-avatar-wrapper {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.admin-avatar-circle {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: #FFFFFF;
+  font-size: 30px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-avatar-edit-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-card-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 4px;
+}
+
+.admin-card-role {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 24px;
+}
+
+.admin-contact-list {
+  width: 100%;
+  border-top: 1px solid var(--border-light);
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+}
+
+.admin-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--text-body);
+}
+
+.admin-contact-item svg {
+  color: var(--text-light);
+  flex-shrink: 0;
+}
