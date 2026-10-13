@@ -32,5 +32,6 @@
         </div>
     </form>
     <script src='<%= ResolveUrl("~/Scripts/site.js") %>'></script>
+    <asp:ContentPlaceHolder ID="scripts" runat="server"></asp:ContentPlaceHolder>
 </body>
 </html>

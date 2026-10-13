@@ -44,8 +44,10 @@
                 <label class="form-label" for="<%= txtPassword.ClientID %>">Password</label>
                 <div class="input-with-icon">
                     <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="Password"></asp:TextBox>
-                    <button type="button" class="input-icon-right js-toggle-password" data-target="<%= txtPassword.ClientID %>" aria-label="Toggle password">
-                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <!-- single toggle controls both password and confirm fields -->
+                    <button type="button" class="input-icon-right js-toggle-password" data-target="<%= txtPassword.ClientID %>,<%= txtConfirmPassword.ClientID %>" aria-label="Toggle password">
+                        <svg class="icon-eye" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        <svg class="icon-eye-off" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display:none;"><path d="M2 2l20 20"></path><path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a21.84 21.84 0 0 1 5-6.93"></path></svg>
                     </button>
                 </div>
                 <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ControlToValidate="txtPassword" ErrorMessage="Password is required" CssClass="val-error" Display="Dynamic" />
@@ -54,9 +56,7 @@
                 <label class="form-label" for="<%= txtConfirmPassword.ClientID %>">Confirm Password</label>
                 <div class="input-with-icon">
                     <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="Confirm Password"></asp:TextBox>
-                    <button type="button" class="input-icon-right js-toggle-password" data-target="<%= txtConfirmPassword.ClientID %>" aria-label="Toggle password">
-                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    </button>
+                    <!-- confirm field uses the single toggle above; no separate button -->
                 </div>
                 <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server" ControlToValidate="txtConfirmPassword" ErrorMessage="Confirm Password is required" CssClass="val-error" Display="Dynamic" />
                 <asp:CompareValidator ID="cvConfirmPassword" runat="server" ControlToValidate="txtConfirmPassword" ControlToCompare="txtPassword" ErrorMessage="Passwords do not match" CssClass="val-error" Display="Dynamic" />

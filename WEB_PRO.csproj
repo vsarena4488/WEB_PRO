@@ -163,7 +163,9 @@
     <Content Include="MasterPages\Admin.Master" />
     <Content Include="MasterPages\Admin.Master.cs" />
     <Content Include="MasterPages\Auth.Master" />
-    <Content Include="MasterPages\Auth.Master.cs" />
+    <Content Include="MasterPages\Auth.Master.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="MasterPages\Public.Master" />
     <Content Include="MasterPages\Public.Master.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -173,7 +175,9 @@
     <Content Include="Public\About.aspx" />
     <Content Include="Public\About.aspx.cs" />
     <Content Include="Public\ChangePassword.aspx" />
-    <Content Include="Public\ChangePassword.aspx.cs" />
+    <Content Include="Public\ChangePassword.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="Public\ForgotPassword.aspx" />
     <Content Include="Public\ForgotPassword.aspx.cs" />
     <Content Include="Public\Home.aspx" />
@@ -181,10 +185,14 @@
       <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="Public\Login.aspx" />
-    <Content Include="Public\Login.aspx.cs" />
+    <Content Include="Public\Login.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="Public\Offers.aspx" />
     <Content Include="Public\Register.aspx" />
-    <Content Include="Public\Register.aspx.cs" />
+    <Content Include="Public\Register.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="Public\Tours.aspx" />
     <Content Include="Public\VerifyAccount.aspx" />
     <Content Include="Public\VerifyAccount.aspx.cs" />
@@ -199,7 +207,9 @@
     <Content Include="User\BrowseTours.aspx" />
     <Content Include="User\BrowseTours.aspx.cs" />
     <Content Include="User\Dashboard.aspx" />
-    <Content Include="User\Dashboard.aspx.cs" />
+    <Content Include="User\Dashboard.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="User\MyBookings.aspx" />
     <Content Include="User\MyBookings.aspx.cs" />
     <Content Include="User\MyReviews.aspx" />

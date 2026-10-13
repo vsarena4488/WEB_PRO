@@ -11,9 +11,19 @@ public partial class Public_Login : System.Web.UI.Page
             authMaster.BackUrl = ResolveUrl("~/Public/Home.aspx");
         }
 
+        // Show registration success banner when redirected after registration
         if (Request.QueryString["registered"] == "1")
         {
             pnlRegistered.Visible = true;
+        }
+
+        // Ensure we don't overwrite placeholder values on postbacks.
+        // Only set/clear initial values on first load.
+        if (!IsPostBack)
+        {
+            // Keep inputs empty so client-side placeholders are visible
+            txtEmail.Text = string.Empty;
+            txtPassword.Text = string.Empty;
         }
     }
 

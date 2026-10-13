@@ -316,6 +316,7 @@
 
 .offer-card-content {
   flex: 1;
+  
 }
 
 .offer-card-title {
@@ -639,6 +640,41 @@
   align-items: center;
 }
 
+/* Improve password toggle appearance and spacing */
+.input-with-icon input[type="password"],
+.input-with-icon input[type="text"],
+.input-with-icon .form-control {
+  padding-right: 48px; /* space for the toggle button */
+}
+
+.input-icon-right {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #6b7280; /* icon color */
+}
+
+.input-icon-right:hover {
+  background: rgba(37,99,235,0.06);
+  color: #2563eb;
+}
+
+.input-icon-right svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  fill: currentColor; /* ensure icon uses button color */
+}
+
+.icon-eye-off { display: none; }
+
+/* When .show-password is applied to button, swap icons */
+.input-icon-right.show-password .icon-eye { display: none; }
+.input-icon-right.show-password .icon-eye-off { display: block; }
+
 /* OTP 6-Digit UI */
 .otp-inputs-row {
   display: flex;
@@ -675,3 +711,125 @@
   color: var(--text-muted);
   margin-top: 20px;
 }
+
+/* Contact card styles moved from Home.aspx */
+.contact-card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 40px;
+  align-items: flex-start;
+  padding: 22px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #eef6fb;
+  box-shadow: 0 6px 18px rgba(31,45,61,0.04);
+}
+
+.contact-card .left {
+  flex: 0 0 45%;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 6px 8px;
+}
+
+.contact-card .right {
+  flex: 0 0 50%;
+  min-width: 300px;
+  padding: 6px 8px;
+}
+
+.contact-card .contact-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #e6eef6;
+  background: #ffffff;
+  box-shadow: inset 0 1px 0 rgba(16,24,40,0.02);
+}
+
+.contact-card .send-btn {
+  width: 260px;
+  align-self: flex-start;
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: #1976f3;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .contact-card {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .contact-card .left,
+  .contact-card .right {
+    flex: 0 0 100%;
+    min-width: unset;
+    padding: 6px 0;
+  }
+  .contact-card .send-btn {
+    width: 100%;
+    align-self: stretch;
+  }
+}
+
+/* Contact card finer styles */
+.contact-card .icon-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.contact-card .icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #eef7ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e1f0ff;
+}
+.contact-card .contact-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #122232;
+}
+.contact-card .contact-subtitle {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #6f7b86;
+}
+.contact-card .contact-details {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 60px;
+}
+.contact-card .contact-details .strong {
+  font-weight: 600;
+  color: #111827;
+}
+.contact-success {
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  width: 100%;
+  justify-content: center;
+}
+
+.contact-card .form-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Section spacing adjustments already set globally; override inline remnants */
+#tours { margin-bottom: 70px; }
+#offers { margin-bottom: 70px; }
+.container[style] { box-sizing: border-box; }

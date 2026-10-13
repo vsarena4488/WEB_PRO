@@ -5,81 +5,1063 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - Tour Booking</title>
-    <link href="~/Styles/site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Styles/user.css" rel="stylesheet" type="text/css" />
-    <link href="~/Styles/responsive.css" rel="stylesheet" type="text/css" />
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link runat="server" href="~/Styles/site.css" rel="stylesheet" type="text/css" />
+    <link runat="server" href="~/Styles/user.css" rel="stylesheet" type="text/css" />
+    <link runat="server" href="~/Styles/responsive.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+        :root {
+            --primary-blue: #2563eb;
+            --primary-hover: #1d4ed8;
+            --text-dark: #0f172a;
+            --text-gray: #64748b;
+            --sidebar-bg: #ffffff;
+            --page-bg: #f8fafc;
+            --border-color: #e2e8f0;
+            --border-light: #f1f5f9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--page-bg);
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .app-layout {
+            display: flex;
+            min-height: 100vh;
+            background-color: var(--page-bg);
+        }
+
+        /* --- Sidebar --- */
+        .sidebar {
+            width: 240px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-brand {
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.15rem;
+            text-decoration: none;
+            margin-bottom: 2.25rem;
+            padding-left: 0.5rem;
+        }
+
+        .sidebar-brand i {
+            font-size: 1.3rem;
+            color: var(--primary-blue);
+        }
+
+        .sidebar .nav {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .sidebar .nav-item {
+            list-style: none;
+            margin: 0;
+        }
+
+        .sidebar .nav-link {
+            color: var(--text-gray);
+            font-size: 0.88rem;
+            font-weight: 500;
+            padding: 0.65rem 0.9rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: background-color 0.15s, color 0.15s;
+            text-decoration: none;
+        }
+
+        .sidebar .nav-link i {
+            width: 18px;
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            transition: color 0.15s;
+        }
+
+        .sidebar .nav-link:hover {
+            background-color: #f1f5f9;
+            color: var(--primary-blue);
+        }
+
+        .sidebar .nav-link:hover i {
+            color: var(--primary-blue);
+        }
+
+        .sidebar .nav-link.active {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .sidebar .nav-link.active i {
+            color: #ffffff;
+        }
+
+        .sidebar .nav-item.logout-item {
+            margin-top: 1.5rem;
+        }
+
+        /* --- Main Content Area --- */
+        .main-wrapper {
+            margin-left: 240px;
+            padding: 1.5rem 2.25rem 2.5rem;
+            flex: 1;
+            min-width: 0;
+            min-height: 100vh;
+            transition: margin-left 0.3s ease;
+            background-color: var(--page-bg);
+        }
+
+        /* Top Bar */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.85rem 1.5rem;
+            background-color: #ffffff;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        .top-bar-title {
+            font-weight: 700;
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-dark);
+        }
+
+        .top-bar-title i.fa-bars {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 4px 12px 4px 6px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background-color: #ffffff;
+            transition: border-color 0.15s ease;
+        }
+
+        .user-profile:hover {
+            border-color: #cbd5e1;
+        }
+
+        .user-avatar {
+            width: 28px;
+            height: 28px;
+            background-color: #e0e7ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        /* --- Welcome Banner --- */
+        .welcome-banner {
+            background-color: #f0f6ff;
+            border: 1px solid #dbeafe;
+            border-radius: 14px;
+            padding: 2rem 2.25rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .welcome-banner h1 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            margin: 0 0 0.4rem 0;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .welcome-banner p {
+            color: var(--text-gray);
+            font-size: 0.92rem;
+            margin: 0;
+        }
+
+        /* --- Stat Cards Grid (5 Cards) --- */
+        .stat-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-icon-wrap {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+
+        .stat-icon-wrap.blue   { background-color: #eff6ff; color: #2563eb; }
+        .stat-icon-wrap.orange { background-color: #fff7ed; color: #ea580c; }
+        .stat-icon-wrap.green  { background-color: #f0fdf4; color: #16a34a; }
+        .stat-icon-wrap.purple { background-color: #faf5ff; color: #9333ea; }
+        .stat-icon-wrap.red    { background-color: #fef2f2; color: #dc2626; }
+
+        .stat-number {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.1;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            margin-bottom: 0.6rem;
+        }
+
+        .stat-link {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .stat-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Section Titles --- */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h5 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .section-header a {
+            font-size: 0.82rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .section-header a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Recent Bookings Table --- */
+        .table-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+            margin-bottom: 2rem;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .table {
+            width: 100%;
+            margin-bottom: 0;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+
+        .table thead th {
+            background-color: #ffffff;
+            color: var(--text-gray);
+            font-weight: 600;
+            font-size: 0.78rem;
+            padding: 1.1rem 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+            text-align: left;
+        }
+
+        .table tbody td {
+            padding: 1.1rem 1.5rem;
+            vertical-align: middle;
+            border-bottom: 1px solid #f8fafc;
+            color: #334155;
+            text-align: left;
+        }
+
+        .table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table tbody tr:hover td {
+            background-color: #fafcff;
+        }
+
+        .badge-status {
+            padding: 0.35rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        .badge-confirmed {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .badge-pending {
+            background-color: #ffedd5;
+            color: #9a3412;
+        }
+
+        .badge-upcoming {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        /* --- Latest Offers Section --- */
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .offer-card {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .offer-img-box {
+            width: 140px;
+            height: 95px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .offer-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .offer-img.cover {
+            object-fit: cover;
+        }
+
+        .offer-content {
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        .offer-title {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0 0 0.3rem 0;
+        }
+
+        .offer-desc {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            margin: 0 0 0.6rem 0;
+        }
+
+        .offer-validity {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #059669;
+            background-color: #d1fae5;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .offer-discount {
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .discount-percent {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            line-height: 1;
+        }
+
+        .discount-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 3rem 2.5rem 2rem;
+            border-radius: 16px;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-brand i {
+            font-size: 1.3rem;
+            color: #ffffff;
+        }
+
+        .footer-desc {
+            font-size: 0.85rem;
+            max-width: 300px;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            color: #94a3b8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 2rem;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid #334155;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: #ffffff;
+            background-color: #1e293b;
+            border-color: #475569;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            padding-top: 1.25rem;
+            font-size: 0.75rem;
+            color: #64748b;
+            text-align: left;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+                box-shadow: 2px 0 16px rgba(0, 0, 0, 0.15);
+            }
+            .sidebar.show {
+                transform: translateX(0);
+            }
+            .main-wrapper {
+                margin-left: 0;
+                padding: 1.25rem;
+            }
+            .stat-cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .offers-grid {
+                grid-template-columns: 1fr;
+            }
+            .offer-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .offer-discount {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .stat-cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .welcome-banner {
+                padding: 1.25rem;
+            }
+            .welcome-banner h1 {
+                font-size: 1.4rem;
+            }
+            .offers-page-grid {
+                grid-template-columns: 1fr;
+            }
+            .offer-card-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .offer-card-thumb {
+                width: 100%;
+                height: 140px;
+            }
+            .profile-grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- Profile Page (Figma Spec) --- */
+        .profile-summary-card {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        .profile-avatar-wrap {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .profile-avatar-badge {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background-color: #dbeafe;
+            color: #2563eb;
+            font-size: 1.15rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: -0.5px;
+        }
+
+        .profile-avatar-dot {
+            position: absolute;
+            bottom: 1px;
+            right: 1px;
+            width: 9px;
+            height: 9px;
+            background-color: #2563eb;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+        }
+
+        .profile-summary-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-summary-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #111827;
+            margin: 0 0 2px 0;
+        }
+
+        .profile-summary-role {
+            font-size: 0.82rem;
+            color: #64748b;
+            margin: 0;
+        }
+
+        .profile-tab-strip {
+            margin-bottom: 24px;
+        }
+
+        .profile-tab-pill {
+            background-color: #2563eb;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 18px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .profile-form-card {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        .profile-card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #111827;
+            margin: 0 0 20px 0;
+        }
+
+        .profile-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px 24px;
+            margin-bottom: 24px;
+        }
+
+        .profile-field-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-field-label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 6px;
+        }
+
+        .profile-field-input {
+            width: 100%;
+            height: 42px;
+            padding: 9px 14px;
+            font-size: 0.88rem;
+            color: #111827;
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            outline: none;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .profile-field-input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .profile-field-input::placeholder {
+            color: #94a3b8;
+            font-weight: 400;
+        }
+
+        .profile-input-with-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-input-with-icon .profile-field-input {
+            padding-right: 38px;
+        }
+
+        .profile-input-icon {
+            position: absolute;
+            right: 14px;
+            color: #94a3b8;
+            font-size: 1rem;
+            pointer-events: none;
+        }
+
+        .profile-actions-row {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        .btn-profile-cancel {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            color: #334155;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 8px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-decoration: none;
+            font-family: inherit;
+        }
+
+        .btn-profile-cancel:hover {
+            background-color: #f8fafc;
+            border-color: #cbd5e1;
+            color: #0f172a;
+        }
+
+        .btn-profile-save {
+            background-color: #2563eb;
+            border: 1px solid #2563eb;
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 8px 22px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            font-family: inherit;
+        }
+
+        .btn-profile-save:hover {
+            background-color: #1d4ed8;
+            border-color: #1d4ed8;
+        }
+
+        .profile-password-fields {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-bottom: 24px;
+        }
+
+        .val-error-text {
+            color: #dc2626;
+            font-size: 0.75rem;
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* --- Offers Page (Figma Spec) --- */
+        .offers-page-header {
+            margin-bottom: 24px;
+        }
+
+        .offers-page-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+
+        .offers-page-subtitle {
+            font-size: 0.88rem;
+            color: #64748b;
+            margin: 0;
+        }
+
+        .offers-page-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .offer-card-item {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .offer-card-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .offer-card-thumb {
+            width: 160px;
+            height: 105px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .offer-card-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .offer-card-thumb img.contain {
+            object-fit: contain;
+        }
+
+        .offer-card-info {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .offer-info-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #111827;
+            margin: 0 0 4px 0;
+        }
+
+        .offer-info-desc {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+
+        .offer-info-valid {
+            align-self: flex-start;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #15803d;
+            background-color: #dcfce7;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .offer-info-discount {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #2563eb;
+            margin-bottom: 12px;
+        }
+
+        .offer-info-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn-offer-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+            border: 1px solid #2563eb;
+            color: #2563eb;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.15s ease;
+        }
+
+        .btn-offer-outline:hover {
+            background-color: #eff6ff;
+            color: #1d4ed8;
+        }
+
+        .btn-offer-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2563eb;
+            border: 1px solid #2563eb;
+            color: #ffffff;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 6px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.15s ease;
+        }
+
+        .btn-offer-primary:hover {
+            background-color: #1d4ed8;
+            border-color: #1d4ed8;
+            color: #ffffff;
+        }
+    </style>
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="app-layout">
-            <!-- Traveler Sidebar -->
-            <aside id="appSidebar" class="app-sidebar">
-                <div class="sidebar-header">
-                    <a href='<%= ResolveUrl("~/User/Dashboard.aspx") %>' class="brand-logo">
-                        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19 6h-3V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H5c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-9-2h4v2h-4V4zm9 15H5V8h14v11z"/>
-                        </svg>
-                        <span>Tour Booking</span>
-                    </a>
-                </div>
+            <!-- Sidebar -->
+            <nav class="sidebar" id="sidebar">
+                <a class="sidebar-brand" href='<%= ResolveUrl("~/User/Dashboard.aspx") %>'>
+                    <i class="fas fa-suitcase-rolling"></i> Tour Booking
+                </a>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class='nav-link <%= IsActive("Dashboard.aspx") %>' href='<%= ResolveUrl("~/User/Dashboard.aspx") %>'>
+                            <i class="fas fa-th-large"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class='nav-link <%= IsActive("BrowseTours.aspx", "TourDetails.aspx", "Booking.aspx", "Payment.aspx") %>' href='<%= ResolveUrl("~/User/BrowseTours.aspx") %>'>
+                            <i class="fas fa-search"></i> Browse Tours
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class='nav-link <%= IsActive("MyBookings.aspx") %>' href='<%= ResolveUrl("~/User/MyBookings.aspx") %>'>
+                            <i class="fas fa-calendar-alt"></i> My Bookings
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class='nav-link <%= IsActive("Wishlist.aspx") %>' href='<%= ResolveUrl("~/User/Wishlist.aspx") %>'>
+                            <i class="fas fa-heart"></i> Wishlist
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class='nav-link <%= IsActive("MyReviews.aspx") %>' href='<%= ResolveUrl("~/User/MyReviews.aspx") %>'>
+                            <i class="fas fa-star"></i> My Reviews
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class='nav-link <%= IsActive("Offers.aspx") %>' href='<%= ResolveUrl("~/User/Offers.aspx") %>'>
+                            <i class="fas fa-tags"></i> Offers
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class='nav-link <%= IsActive("Profile.aspx") %>' href='<%= ResolveUrl("~/User/Profile.aspx") %>'>
+                            <i class="fas fa-user"></i> My Profile
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3">
+                        <a class="nav-link" href='<%= ResolveUrl("~/Public/Login.aspx") %>'>
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
-                <nav class="sidebar-nav">
-                    <a href='<%= ResolveUrl("~/User/Dashboard.aspx") %>' class='sidebar-link <%= IsActive("Dashboard.aspx") %>'>
-                        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-                        <span>Dashboard</span>
-                    </a>
-                    <a href='<%= ResolveUrl("~/User/BrowseTours.aspx") %>' class='sidebar-link <%= IsActive("BrowseTours.aspx", "TourDetails.aspx", "Booking.aspx", "Payment.aspx") %>'>
-                        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        <span>Browse Tours</span>
-                    </a>
-                    <a href='<%= ResolveUrl("~/User/MyBookings.aspx") %>' class='sidebar-link <%= IsActive("MyBookings.aspx") %>'>
-                        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                        <span>My Bookings</span>
-                    </a>
-                    <a href='<%= ResolveUrl("~/User/Wishlist.aspx") %>' class='sidebar-link <%= IsActive("Wishlist.aspx") %>'>
-                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                        <span>Wishlist</span>
-                    </a>
-                    <a href='<%= ResolveUrl("~/User/MyReviews.aspx") %>' class='sidebar-link <%= IsActive("MyReviews.aspx") %>'>
-                        <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                        <span>My Reviews</span>
-                    </a>
-                    <a href='<%= ResolveUrl("~/User/Offers.aspx") %>' class='sidebar-link <%= IsActive("Offers.aspx") %>'>
-                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
-                        <span>Offers</span>
-                    </a>
-                    <a href='<%= ResolveUrl("~/User/Profile.aspx") %>' class='sidebar-link <%= IsActive("Profile.aspx") %>'>
-                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                        <span>My Profile</span>
-                    </a>
-                    <div class="sidebar-divider"></div>
-                    <a href='<%= ResolveUrl("~/Public/Login.aspx") %>' class="sidebar-link">
-                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-                        <span>Logout</span>
-                    </a>
-                </nav>
-            </aside>
-
-            <!-- Main App Body -->
-            <div class="app-main">
-                <header class="app-topbar">
-                    <div class="topbar-left">
-                        <button type="button" id="menuToggleBtn" class="menu-toggle-btn" aria-label="Toggle Menu">
-                            <svg class="icon-svg" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                        </button>
-                        <h1 class="page-title"><asp:ContentPlaceHolder ID="TitleContent" runat="server"><%: Page.Title %></asp:ContentPlaceHolder></h1>
+            <!-- Main Content Area -->
+            <div class="main-wrapper app-main">
+                <!-- Top Bar -->
+                <div class="top-bar">
+                    <div class="top-bar-title">
+                        <i class="fas fa-bars d-lg-none" id="menuToggleBtn" onclick="document.getElementById('sidebar').classList.toggle('show');" style="cursor: pointer; margin-right: 8px;"></i>
+                        <asp:ContentPlaceHolder ID="TitleContent" runat="server"><%: Page.Title %></asp:ContentPlaceHolder>
                     </div>
-                    <div class="topbar-right">
-                        <a href='<%= ResolveUrl("~/User/Profile.aspx") %>' class="topbar-user">
-                            <span class="topbar-user-avatar">A</span>
+                    <div class="user-profile">
+                        <a href='<%= ResolveUrl("~/User/Profile.aspx") %>' style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+                            <div class="user-avatar"><i class="fas fa-user"></i></div>
                             <span>Hello, Arjun</span>
-                            <svg class="icon-svg" style="width:14px; height:14px;" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            <i class="fas fa-chevron-down" style="font-size: 0.7rem; color: var(--text-gray);"></i>
                         </a>
                     </div>
-                </header>
+                </div>
 
-                <div class="content-body">
+                <!-- Page Content Body -->
+                <div class="content-body" style="padding: 0;">
                     <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
                 </div>
             </div>

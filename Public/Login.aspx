@@ -16,7 +16,7 @@
 
         <div class="form-group">
             <label class="form-label" for="<%= txtEmail.ClientID %>">Email Address</label>
-            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="vsarena753@rku.ac.in" Text="vsarena753@rku.ac.in"></asp:TextBox>
+            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="Your Email"></asp:TextBox>
             <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email address is required" CssClass="val-error" Display="Dynamic" />
             <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail" ValidationExpression="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" ErrorMessage="Enter a valid email" CssClass="val-error" Display="Dynamic" />
         </div>
@@ -24,9 +24,11 @@
         <div class="form-group">
             <label class="form-label" for="<%= txtPassword.ClientID %>">Password</label>
             <div class="input-with-icon">
-                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="••••••••" Text="password123"></asp:TextBox>
+                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="Your Password"></asp:TextBox>
                 <button type="button" class="input-icon-right js-toggle-password" data-target="<%= txtPassword.ClientID %>" aria-label="Toggle password">
-                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <!-- two icons: show eye when masked, eye-off when visible -->
+                    <svg class="icon-eye" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display:inline-block;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <svg class="icon-eye-off" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display:none;"><path d="M2 2l20 20"></path><path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a21.84 21.84 0 0 1 5-6.93"></path></svg>
                 </button>
             </div>
             <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ControlToValidate="txtPassword" ErrorMessage="Password is required" CssClass="val-error" Display="Dynamic" />
