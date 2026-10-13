@@ -56,6 +56,7 @@
                 <label class="form-label">Base Price <span class="required">*</span></label>
                 <asp:TextBox ID="txtBasePrice" runat="server" CssClass="form-control" placeholder="/- Enter amount"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvBasePrice" runat="server" ControlToValidate="txtBasePrice" ErrorMessage="Base price is required" CssClass="val-error" Display="Dynamic" />
+                <asp:RegularExpressionValidator ID="revBasePrice" runat="server" ControlToValidate="txtBasePrice" ValidationExpression="^\d+(\.\d{1,2})?$" ErrorMessage="Enter a valid price (e.g. 15000)" CssClass="val-error" Display="Dynamic" />
             </div>
             <div class="form-col form-group">
                 <label class="form-label">Tour Status <span class="required">*</span></label>
@@ -72,7 +73,7 @@
         </div>
 
         <div class="form-group" style="margin-bottom: 28px;">
-            <label class="form-label">Upload Cover Image <span class="required">*</span></label>
+            <label class="form-label">Upload Cover Image</label>
             <div class="upload-dropzone">
                 <svg class="upload-dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
                 <div class="upload-dropzone-text">Click to upload or drag and drop</div>

@@ -224,3 +224,455 @@
   color: var(--text-light);
   flex-shrink: 0;
 }
+
+/* ==========================================================================
+   Admin Dark Sidebar Theme & Manage Tours (Figma Spec)
+   ========================================================================== */
+
+/* Dark Sidebar */
+.app-sidebar {
+  width: 240px;
+  background-color: #1e293b !important;
+  border-right: 1px solid #1e293b !important;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  transition: transform 0.3s ease;
+}
+
+.app-sidebar .sidebar-header {
+  height: 56px;
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
+  border-bottom: none;
+  margin-bottom: 1.5rem;
+}
+
+.app-sidebar .brand-logo {
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.15rem;
+  text-decoration: none;
+}
+
+.app-sidebar .brand-logo i,
+.app-sidebar .brand-icon {
+  color: #2563eb;
+  font-size: 1.3rem;
+}
+
+.app-sidebar .sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.app-sidebar .sidebar-link {
+  color: #94a3b8 !important;
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 0.65rem 0.9rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.app-sidebar .sidebar-link i,
+.app-sidebar .sidebar-link svg {
+  width: 18px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #94a3b8 !important;
+  stroke: #94a3b8;
+}
+
+.app-sidebar .sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  color: #f1f5f9 !important;
+}
+
+.app-sidebar .sidebar-link:hover i,
+.app-sidebar .sidebar-link:hover svg {
+  color: #f1f5f9 !important;
+  stroke: #f1f5f9;
+}
+
+.app-sidebar .sidebar-link.active {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.app-sidebar .sidebar-link.active i,
+.app-sidebar .sidebar-link.active svg {
+  color: #ffffff !important;
+  stroke: #ffffff;
+}
+
+.app-sidebar .sidebar-divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 1.25rem 0.5rem;
+}
+
+/* Manage Tours Container & Controls (Figma Spec) */
+.admin-card-container {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 32px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.admin-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.admin-page-heading {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 4px 0;
+}
+
+.admin-page-subheading {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.btn-admin-add {
+  background-color: #2563eb;
+  color: #ffffff !important;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 9px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.btn-admin-add:hover {
+  background-color: #1d4ed8;
+  color: #ffffff !important;
+}
+
+.admin-filters-bar {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.admin-search-wrapper {
+  position: relative;
+  width: 290px;
+}
+
+.admin-search-wrapper .admin-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 0.85rem;
+  pointer-events: none;
+}
+
+.admin-search-input {
+  width: 100%;
+  height: 40px;
+  padding: 8px 14px 8px 38px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #111827;
+  background-color: #ffffff;
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.admin-search-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.admin-search-input::placeholder {
+  color: #94a3b8;
+}
+
+.admin-select-wrapper {
+  position: relative;
+}
+
+.admin-select-control {
+  height: 40px;
+  padding: 8px 36px 8px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #374151;
+  background-color: #ffffff;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+  transition: border-color 0.15s;
+}
+
+.admin-select-control:focus {
+  border-color: #2563eb;
+}
+
+.admin-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.admin-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.admin-data-table th {
+  text-align: left;
+  padding: 14px 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #e2e8f0;
+  text-transform: uppercase;
+}
+
+.admin-data-table td {
+  padding: 16px 12px;
+  vertical-align: middle;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.admin-data-table tbody tr:hover td {
+  background-color: #fafcff;
+}
+
+.tour-info-cell {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.tour-thumb-box {
+  width: 56px;
+  height: 38px;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #ffffff;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tour-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tour-thumb-img.contain {
+  object-fit: contain;
+}
+
+.tour-name {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #111827;
+  margin-bottom: 2px;
+}
+
+.tour-id {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.text-dest {
+  color: #64748b;
+  font-size: 0.82rem;
+}
+
+.text-duration {
+  color: #374151;
+  font-size: 0.82rem;
+}
+
+.text-price {
+  font-weight: 700;
+  color: #111827;
+  font-size: 0.88rem;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-pill.status-active {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.status-pill.status-inactive {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.action-buttons-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.action-btn {
+  color: #64748b;
+  font-size: 0.95rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.action-btn:hover {
+  color: #111827;
+}
+
+.action-btn-delete:hover {
+  color: #ef4444;
+}
+
+.action-btn-activate:hover {
+  color: #16a34a;
+}
+
+.admin-pagination-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  padding-top: 14px;
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.pagination-controls {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.page-num-btn {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #64748b;
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+.page-num-btn:hover {
+  border-color: #cbd5e1;
+  color: #111827;
+}
+
+.page-num-btn.active {
+  background-color: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Suppress browser native password reveal icon (Microsoft Edge / IE) */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
+}
+
+input::-webkit-credentials-auto-fill-button {
+  visibility: hidden !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  right: 0 !important;
+}
+
+
+/* Disable Edge & IE native password reveal/clear buttons */
+::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="password"]::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="password"]::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="text"]::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="text"]::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input::-webkit-credentials-auto-fill-button { visibility: hidden !important; pointer-events: none !important; position: absolute !important; right: 0 !important; }

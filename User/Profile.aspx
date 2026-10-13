@@ -1,6 +1,29 @@
 <%@ Page Title="My Profile" Language="C#" MasterPageFile="~/MasterPages/User.Master" AutoEventWireup="true" CodeFile="Profile.aspx.cs" Inherits="User_Profile" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <script type="text/javascript">
+        function togglePassVisibility(inputId, btn) {
+            var input = document.getElementById(inputId);
+            if (!input) return;
+            var icon = btn ? btn.querySelector('i') : null;
+            if (input.type === 'password') {
+                input.type = 'text';
+                if (icon) {
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                }
+                if (btn) btn.setAttribute('aria-label', 'Hide password');
+            } else {
+                input.type = 'password';
+                if (icon) {
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+                if (btn) btn.setAttribute('aria-label', 'Show password');
+            }
+        }
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="TitleContent" runat="server">
@@ -63,6 +86,7 @@
                 <label class="profile-field-label">Phone Number</label>
                 <asp:TextBox ID="txtPhone" runat="server" CssClass="profile-field-input" Text="+91 9328206703" placeholder="Enter phone number" />
                 <asp:RequiredFieldValidator ID="rfvPhone" runat="server" ControlToValidate="txtPhone" ErrorMessage="Phone number is required" CssClass="val-error-text" Display="Dynamic" ValidationGroup="vgProfile" />
+                <asp:RegularExpressionValidator ID="revPhone" runat="server" ControlToValidate="txtPhone" ValidationExpression="^(\+?\d{1,4}[\s-]?)?\(?\d{1,4}\)?[\s-]?\d{1,4}[\s-]?\d{1,9}$" ErrorMessage="Enter a valid phone number" CssClass="val-error-text" Display="Dynamic" ValidationGroup="vgProfile" />
             </div>
 
             <!-- Date of Birth -->
@@ -97,14 +121,25 @@
             <!-- New Password -->
             <div class="profile-field-group">
                 <label class="profile-field-label">New Password</label>
-                <asp:TextBox ID="txtNewPassword" runat="server" TextMode="Password" CssClass="profile-field-input" placeholder="Enter new password" />
+                <div class="input-with-icon">
+                    <asp:TextBox ID="txtNewPassword" runat="server" TextMode="Password" CssClass="profile-field-input" placeholder="Enter new password" />
+                    <button type="button" class="input-icon-right" onclick="togglePassVisibility('<%= txtNewPassword.ClientID %>', this)" aria-label="Toggle password">
+                        <i class="far fa-eye"></i>
+                    </button>
+                </div>
                 <asp:RequiredFieldValidator ID="rfvNewPassword" runat="server" ControlToValidate="txtNewPassword" ErrorMessage="New password is required" CssClass="val-error-text" Display="Dynamic" ValidationGroup="vgPassword" />
+                <asp:RegularExpressionValidator ID="revNewPassword" runat="server" ControlToValidate="txtNewPassword" ValidationExpression="^.{6,}$" ErrorMessage="Password must be at least 6 characters" CssClass="val-error-text" Display="Dynamic" ValidationGroup="vgPassword" />
             </div>
 
             <!-- Confirm Password -->
             <div class="profile-field-group">
                 <label class="profile-field-label">Confirm Password</label>
-                <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" CssClass="profile-field-input" placeholder="Confirm your new password" />
+                <div class="input-with-icon">
+                    <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" CssClass="profile-field-input" placeholder="Confirm your new password" />
+                    <button type="button" class="input-icon-right" onclick="togglePassVisibility('<%= txtConfirmPassword.ClientID %>', this)" aria-label="Toggle password">
+                        <i class="far fa-eye"></i>
+                    </button>
+                </div>
                 <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server" ControlToValidate="txtConfirmPassword" ErrorMessage="Confirm your password" CssClass="val-error-text" Display="Dynamic" ValidationGroup="vgPassword" />
                 <asp:CompareValidator ID="cvConfirmPassword" runat="server" ControlToValidate="txtConfirmPassword" ControlToCompare="txtNewPassword" ErrorMessage="Passwords do not match" CssClass="val-error-text" Display="Dynamic" ValidationGroup="vgPassword" />
             </div>

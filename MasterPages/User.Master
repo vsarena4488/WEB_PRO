@@ -11,11 +11,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link runat="server" href="~/Styles/site.css" rel="stylesheet" type="text/css" />
-    <link runat="server" href="~/Styles/user.css" rel="stylesheet" type="text/css" />
-    <link runat="server" href="~/Styles/responsive.css" rel="stylesheet" type="text/css" />
+    <link runat="server" href="~/Styles/site.css?v=20261013_v7" rel="stylesheet" type="text/css" />
+    <link runat="server" href="~/Styles/user.css?v=20261013_v7" rel="stylesheet" type="text/css" />
+    <link runat="server" href="~/Styles/responsive.css?v=20261013_v7" rel="stylesheet" type="text/css" />
 
     <style type="text/css">
+
+/* Disable Edge & IE native password reveal/clear buttons */
+::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="password"]::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="password"]::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="text"]::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="text"]::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input::-webkit-credentials-auto-fill-button { visibility: hidden !important; pointer-events: none !important; position: absolute !important; right: 0 !important; }
+
         :root {
             --primary-blue: #2563eb;
             --primary-hover: #1d4ed8;

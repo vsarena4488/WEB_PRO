@@ -54,6 +54,7 @@
             <div class="form-col form-group">
                 <label class="form-label">Base Price Override (Optional)</label>
                 <asp:TextBox ID="txtPriceOverride" runat="server" CssClass="form-control" placeholder="/- Leave blank to use default tour price"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="revPriceOverride" runat="server" ControlToValidate="txtPriceOverride" ValidationExpression="^\d+(\.\d{1,2})?$" ErrorMessage="Enter a valid price amount" CssClass="val-error" Display="Dynamic" />
             </div>
         </div>
 

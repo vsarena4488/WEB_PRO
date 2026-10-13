@@ -8,154 +8,254 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 22px; font-weight: 700; color: var(--text-heading); margin-bottom: 4px;">Manage Traveler Accounts</h2>
-        <p style="font-size: 13px; color: var(--text-muted);">View registered users, edit profiles, and manage account access statuses.</p>
-    </div>
-
-    <!-- Filters Toolbar -->
-    <div class="admin-toolbar">
-        <div class="admin-toolbar-left">
-            <div class="admin-search-box">
-                <svg class="admin-search-icon icon-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                <asp:TextBox ID="txtUserSearch" runat="server" CssClass="form-control" placeholder="Search by Name, Email, or User ID..."></asp:TextBox>
+    <div class="admin-card-container">
+        <!-- Card Header -->
+        <div class="admin-card-header">
+            <div>
+                <h2 class="admin-page-heading">Manage Traveler Accounts</h2>
+                <p class="admin-page-subheading">View registered users, edit profiles, and manage account access statuses.</p>
             </div>
-            <asp:DropDownList ID="ddlUserStatus" runat="server" CssClass="form-control admin-select-filter">
-                <asp:ListItem Text="Status: All Users" Value="" />
-                <asp:ListItem Text="Active" Value="active" />
-                <asp:ListItem Text="Inactive" Value="inactive" />
-            </asp:DropDownList>
+        </div>
+
+        <!-- Filter Toolbar -->
+        <div class="admin-filters-bar">
+            <div class="admin-search-wrapper" style="width: 340px;">
+                <i class="fas fa-search admin-search-icon"></i>
+                <asp:TextBox ID="txtUserSearch" runat="server" CssClass="admin-search-input" placeholder="Search by name, email, phone, or ID..."></asp:TextBox>
+            </div>
+            <div class="admin-select-wrapper">
+                <asp:DropDownList ID="ddlUserStatus" runat="server" CssClass="admin-select-control">
+                    <asp:ListItem Text="Status: All Users" Value="" />
+                    <asp:ListItem Text="Active" Value="active" />
+                    <asp:ListItem Text="Inactive" Value="inactive" />
+                </asp:DropDownList>
+            </div>
+        </div>
+
+        <!-- Users Table -->
+        <div class="admin-table-wrap">
+            <table class="admin-data-table">
+                <thead>
+                    <tr>
+                        <th>USER ID</th>
+                        <th>CUSTOMER</th>
+                        <th>CONTACT INFO</th>
+                        <th>LOCATION</th>
+                        <th>JOINED DATE</th>
+                        <th>STATUS</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Row 1 -->
+                    <tr data-status="active">
+                        <td style="font-weight: 700; color: #2563eb;">USR-1045</td>
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div style="width: 32px; height: 32px; border-radius: 50%; background: #e0e7ff; color: #2563eb; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700;">RS</div>
+                                <span style="font-weight: 600; color: #111827;">Rahul Sharma</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #111827; font-weight: 500;">rahul@example.com</div>
+                            <div style="font-size: 0.78rem; color: #94a3b8;">+91 98765 43210</div>
+                        </td>
+                        <td style="color: #64748b;">New Delhi</td>
+                        <td style="color: #64748b;">15 Jan 2026</td>
+                        <td>
+                            <span class="status-pill status-active">
+                                <span class="status-dot"></span>Active
+                            </span>
+                        </td>
+                        <td>
+                            <div class="action-buttons-group">
+                                <button type="button" class="action-btn" title="View Profile" onclick="alert('Viewing user USR-1045');">
+                                    <i class="far fa-eye"></i>
+                                </button>
+                                <button type="button" class="action-btn" title="Edit User" onclick="alert('Editing user USR-1045');">
+                                    <i class="far fa-edit"></i>
+                                </button>
+                                <button type="button" class="action-btn action-btn-delete" title="Suspend User" onclick="alert('User USR-1045 status toggled.');">
+                                    <i class="fas fa-ban"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 2 -->
+                    <tr data-status="active">
+                        <td style="font-weight: 700; color: #2563eb;">USR-1046</td>
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div style="width: 32px; height: 32px; border-radius: 50%; background: #fef3c7; color: #b45309; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700;">AK</div>
+                                <span style="font-weight: 600; color: #111827;">Amit Kumar</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #111827; font-weight: 500;">amit.k@example.com</div>
+                            <div style="font-size: 0.78rem; color: #94a3b8;">+91 87654 32109</div>
+                        </td>
+                        <td style="color: #64748b;">Mumbai</td>
+                        <td style="color: #64748b;">22 Mar 2026</td>
+                        <td>
+                            <span class="status-pill status-active">
+                                <span class="status-dot"></span>Active
+                            </span>
+                        </td>
+                        <td>
+                            <div class="action-buttons-group">
+                                <button type="button" class="action-btn" title="View Profile" onclick="alert('Viewing user USR-1046');">
+                                    <i class="far fa-eye"></i>
+                                </button>
+                                <button type="button" class="action-btn" title="Edit User" onclick="alert('Editing user USR-1046');">
+                                    <i class="far fa-edit"></i>
+                                </button>
+                                <button type="button" class="action-btn action-btn-delete" title="Suspend User" onclick="alert('User USR-1046 status toggled.');">
+                                    <i class="fas fa-ban"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 3 -->
+                    <tr data-status="inactive">
+                        <td style="font-weight: 700; color: #2563eb;">USR-1047</td>
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div style="width: 32px; height: 32px; border-radius: 50%; background: #f1f5f9; color: #475569; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700;">PP</div>
+                                <span style="font-weight: 600; color: #111827;">Priya Patel</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #111827; font-weight: 500;">priya.p@example.com</div>
+                            <div style="font-size: 0.78rem; color: #94a3b8;">+91 76543 21098</div>
+                        </td>
+                        <td style="color: #64748b;">Ahmedabad</td>
+                        <td style="color: #64748b;">10 Jun 2026</td>
+                        <td>
+                            <span class="status-pill status-inactive">
+                                <span class="status-dot"></span>Inactive
+                            </span>
+                        </td>
+                        <td>
+                            <div class="action-buttons-group">
+                                <button type="button" class="action-btn" title="View Profile" onclick="alert('Viewing user USR-1047');">
+                                    <i class="far fa-eye"></i>
+                                </button>
+                                <button type="button" class="action-btn action-btn-activate" title="Activate User" onclick="alert('User USR-1047 activated.');">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 4 -->
+                    <tr data-status="active">
+                        <td style="font-weight: 700; color: #2563eb;">USR-1048</td>
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div style="width: 32px; height: 32px; border-radius: 50%; background: #dcfce7; color: #15803d; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700;">VS</div>
+                                <span style="font-weight: 600; color: #111827;">Vikram Singh</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="color: #111827; font-weight: 500;">vikram.s@example.com</div>
+                            <div style="font-size: 0.78rem; color: #94a3b8;">+91 65432 10987</div>
+                        </td>
+                        <td style="color: #64748b;">Jaipur</td>
+                        <td style="color: #64748b;">05 Aug 2026</td>
+                        <td>
+                            <span class="status-pill status-active">
+                                <span class="status-dot"></span>Active
+                            </span>
+                        </td>
+                        <td>
+                            <div class="action-buttons-group">
+                                <button type="button" class="action-btn" title="View Profile" onclick="alert('Viewing user USR-1048');">
+                                    <i class="far fa-eye"></i>
+                                </button>
+                                <button type="button" class="action-btn" title="Edit User" onclick="alert('Editing user USR-1048');">
+                                    <i class="far fa-edit"></i>
+                                </button>
+                                <button type="button" class="action-btn action-btn-delete" title="Suspend User" onclick="alert('User USR-1048 status toggled.');">
+                                    <i class="fas fa-ban"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Table Pagination Footer -->
+            <div class="admin-pagination-row">
+                <span class="pagination-count">Showing 1 to 4 of 1,250 users</span>
+                <div class="pagination-controls">
+                    <a href="javascript:void(0)" class="page-num-btn">&lt;</a>
+                    <a href="javascript:void(0)" class="page-num-btn active">1</a>
+                    <a href="javascript:void(0)" class="page-num-btn">2</a>
+                    <a href="javascript:void(0)" class="page-num-btn">3</a>
+                    <a href="javascript:void(0)" class="page-num-btn">&gt;</a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Users Table -->
-    <div class="table-responsive">
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>USER ID</th>
-                    <th>CUSTOMER</th>
-                    <th>CONTACT INFO</th>
-                    <th>LOCATION</th>
-                    <th>JOINED DATE</th>
-                    <th>STATUS</th>
-                    <th>ACTIONS</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Row 1 -->
-                <tr>
-                    <td class="font-semibold">1045</td>
-                    <td>
-                        <div class="admin-table-item-info">
-                            <span class="admin-user-avatar-initials">RS</span>
-                            <span style="font-weight: 600; color: var(--text-heading);">Rahul Sharma</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div>rahul@example.com</div>
-                        <div style="font-size: 12px; color: var(--text-muted);">+91 98765 43210</div>
-                    </td>
-                    <td>New Delhi</td>
-                    <td>15 Jan 2026</td>
-                    <td><span class="badge badge-active"><span class="badge-dot"></span>Active</span></td>
-                    <td>
-                        <div class="admin-table-actions">
-                            <button type="button" class="btn-icon" title="View"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
-                            <button type="button" class="btn-icon" title="Edit"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></button>
-                            <button type="button" class="btn-icon btn-icon-danger" title="Suspend User" onclick="alert('User 1045 status updated.');"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg></button>
-                        </div>
-                    </td>
-                </tr>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            var searchInput = document.getElementById('<%= txtUserSearch.ClientID %>');
+            var statusSelect = document.getElementById('<%= ddlUserStatus.ClientID %>');
+            var tableBody = document.querySelector('.admin-data-table tbody');
+            var countLabel = document.querySelector('.pagination-count');
 
-                <!-- Row 2 -->
-                <tr>
-                    <td class="font-semibold">1046</td>
-                    <td>
-                        <div class="admin-table-item-info">
-                            <span class="admin-user-avatar-initials">AK</span>
-                            <span style="font-weight: 600; color: var(--text-heading);">Amit Kumar</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div>amit.k@example.com</div>
-                        <div style="font-size: 12px; color: var(--text-muted);">+91 87654 32109</div>
-                    </td>
-                    <td>Mumbai</td>
-                    <td>22 Mar 2026</td>
-                    <td><span class="badge badge-active"><span class="badge-dot"></span>Active</span></td>
-                    <td>
-                        <div class="admin-table-actions">
-                            <button type="button" class="btn-icon" title="View"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
-                            <button type="button" class="btn-icon" title="Edit"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></button>
-                            <button type="button" class="btn-icon btn-icon-danger" title="Suspend User" onclick="alert('User 1046 status updated.');"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg></button>
-                        </div>
-                    </td>
-                </tr>
+            function filterUsers() {
+                var query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+                var status = (statusSelect ? statusSelect.value : '').toLowerCase().trim();
 
-                <!-- Row 3 -->
-                <tr>
-                    <td class="font-semibold">1047</td>
-                    <td>
-                        <div class="admin-table-item-info">
-                            <span class="admin-user-avatar-initials">PP</span>
-                            <span style="font-weight: 600; color: var(--text-heading);">Priya Patel</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div>priya.p@example.com</div>
-                        <div style="font-size: 12px; color: var(--text-muted);">+91 76543 21098</div>
-                    </td>
-                    <td>Ahmedabad</td>
-                    <td>10 Jun 2026</td>
-                    <td><span class="badge badge-inactive"><span class="badge-dot"></span>Inactive</span></td>
-                    <td>
-                        <div class="admin-table-actions">
-                            <button type="button" class="btn-icon" title="View"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
-                            <button type="button" class="btn-icon" title="Edit"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></button>
-                            <button type="button" class="btn-icon" title="Activate User" onclick="alert('User 1047 activated.');"><svg class="icon-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></button>
-                        </div>
-                    </td>
-                </tr>
+                var rows = tableBody ? Array.from(tableBody.querySelectorAll('tr:not(.no-results-row)')) : [];
+                var visibleCount = 0;
 
-                <!-- Row 4 -->
-                <tr>
-                    <td class="font-semibold">1048</td>
-                    <td>
-                        <div class="admin-table-item-info">
-                            <span class="admin-user-avatar-initials">VS</span>
-                            <span style="font-weight: 600; color: var(--text-heading);">Vikram Singh</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div>vikram.s@example.com</div>
-                        <div style="font-size: 12px; color: var(--text-muted);">+91 65432 10987</div>
-                    </td>
-                    <td>Jaipur</td>
-                    <td>05 Aug 2026</td>
-                    <td><span class="badge badge-active"><span class="badge-dot"></span>Active</span></td>
-                    <td>
-                        <div class="admin-table-actions">
-                            <button type="button" class="btn-icon" title="View"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="10" r="3"></circle></svg></button>
-                            <button type="button" class="btn-icon" title="Edit"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></button>
-                            <button type="button" class="btn-icon btn-icon-danger" title="Suspend User" onclick="alert('User 1048 status updated.');"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg></button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                rows.forEach(function (row) {
+                    var text = row.textContent.toLowerCase();
+                    var rowStatus = (row.getAttribute('data-status') || '').toLowerCase();
 
-        <!-- Pagination Footer -->
-        <div class="pagination-wrapper">
-            <div>Showing 1 to 4 of 1,250 users</div>
-            <div class="pagination">
-                <a href="javascript:void(0)" class="page-btn">&lt;</a>
-                <a href="javascript:void(0)" class="page-btn active">1</a>
-                <a href="javascript:void(0)" class="page-btn">2</a>
-                <a href="javascript:void(0)" class="page-btn">3</a>
-                <span style="padding: 0 4px; color: var(--text-light);">&hellip;</span>
-                <a href="javascript:void(0)" class="page-btn">&gt;</a>
-            </div>
-        </div>
-    </div>
+                    var matchesQuery = !query || text.indexOf(query) !== -1;
+                    var matchesStatus = !status || rowStatus === status || text.indexOf(status) !== -1;
+
+                    if (matchesQuery && matchesStatus) {
+                        row.style.display = '';
+                        visibleCount++;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+
+                // Empty state display
+                var emptyRow = tableBody.querySelector('.no-results-row');
+                if (visibleCount === 0) {
+                    if (!emptyRow) {
+                        emptyRow = document.createElement('tr');
+                        emptyRow.className = 'no-results-row';
+                        emptyRow.innerHTML = '<td colspan="7" style="text-align: center; padding: 40px 20px; color: #94a3b8;"><i class="fas fa-search" style="font-size: 2rem; margin-bottom: 12px; display: block; color: #cbd5e1;"></i><div style="font-size: 0.95rem; font-weight: 600; color: #475569; margin-bottom: 4px;">No matching traveler accounts found</div><div style="font-size: 0.82rem;">Try adjusting your search query or status filter.</div></td>';
+                        tableBody.appendChild(emptyRow);
+                    } else {
+                        emptyRow.style.display = '';
+                    }
+                } else if (emptyRow) {
+                    emptyRow.style.display = 'none';
+                }
+
+                if (countLabel) {
+                    countLabel.textContent = 'Showing ' + (visibleCount > 0 ? '1 to ' + visibleCount : '0') + ' of 1,250 users';
+                }
+            }
+
+            if (searchInput) {
+                searchInput.addEventListener('input', filterUsers);
+                searchInput.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter') e.preventDefault();
+                });
+            }
+            if (statusSelect) statusSelect.addEventListener('change', filterUsers);
+        });
+    </script>
 </asp:Content>

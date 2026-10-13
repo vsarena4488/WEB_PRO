@@ -9,6 +9,7 @@ public partial class Admin_AddSchedule : System.Web.UI.Page
 
     protected void btnCreateSchedule_Click(object sender, EventArgs e)
     {
+        Page.Validate();
         if (Page.IsValid)
         {
             Response.Redirect("~/Admin/TourSchedules.aspx");

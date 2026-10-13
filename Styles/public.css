@@ -622,22 +622,25 @@
   line-height: 1.5;
 }
 
-.input-with-icon {
-  position: relative;
+/* Suppress browser native password reveal icon (Microsoft Edge / IE) */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
 }
 
-.input-icon-right {
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-light);
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
-  display: flex;
-  align-items: center;
+input::-webkit-credentials-auto-fill-button {
+  visibility: hidden !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  right: 0 !important;
+}
+
+.input-with-icon {
+  position: relative;
+  display: block;
 }
 
 /* Improve password toggle appearance and spacing */
@@ -648,13 +651,35 @@
 }
 
 .input-icon-right {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 36px;
   height: 36px;
   border-radius: 6px;
+  display: flex;
   align-items: center;
   justify-content: center;
   background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
   color: #6b7280; /* icon color */
+  transition: all 0.15s ease;
+  z-index: 2;
+}
+
+
+.input-icon-right i {
+  font-size: 15px;
+  color: #94a3b8;
+  pointer-events: none;
+  transition: color 0.15s ease;
+}
+
+.input-icon-right:hover i {
+  color: #2563eb;
 }
 
 .input-icon-right:hover {
@@ -666,14 +691,59 @@
   width: 20px;
   height: 20px;
   display: block;
-  fill: currentColor; /* ensure icon uses button color */
 }
 
-.icon-eye-off { display: none; }
+.input-icon-right .icon-eye {
+  display: block;
+}
+
+.input-icon-right .icon-eye-off {
+  display: none;
+}
 
 /* When .show-password is applied to button, swap icons */
-.input-icon-right.show-password .icon-eye { display: none; }
-.input-icon-right.show-password .icon-eye-off { display: block; }
+.input-icon-right.show-password .icon-eye {
+  display: none !important;
+}
+
+.input-icon-right.show-password .icon-eye-off {
+  display: block !important;
+}
+
+/* OTP Toggle Button */
+.otp-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 12px auto 0;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4b5563;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.otp-toggle-btn:hover {
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+.otp-toggle-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.otp-toggle-btn.show-password .icon-eye {
+  display: none !important;
+}
+
+.otp-toggle-btn.show-password .icon-eye-off {
+  display: block !important;
+}
 
 /* OTP 6-Digit UI */
 .otp-inputs-row {
@@ -833,3 +903,15 @@
 #tours { margin-bottom: 70px; }
 #offers { margin-bottom: 70px; }
 .container[style] { box-sizing: border-box; }
+
+
+/* Disable Edge & IE native password reveal/clear buttons */
+::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="password"]::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="password"]::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="text"]::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="text"]::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input::-webkit-credentials-auto-fill-button { visibility: hidden !important; pointer-events: none !important; position: absolute !important; right: 0 !important; }

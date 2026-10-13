@@ -1,3 +1,30 @@
+
+/**
+ * Global Password Visibility Toggle
+ * Toggles single FontAwesome eye / eye-slash icon and input password/text type.
+ */
+function togglePassVisibility(inputId, btn) {
+  var input = document.getElementById(inputId);
+  if (!input) return;
+  var icon = btn ? btn.querySelector('i') : null;
+  if (input.type === 'password') {
+    input.type = 'text';
+    if (icon) {
+      icon.classList.remove('fa-eye');
+      icon.classList.add('fa-eye-slash');
+    }
+    if (btn) btn.setAttribute('aria-label', 'Hide password');
+  } else {
+    input.type = 'password';
+    if (icon) {
+      icon.classList.remove('fa-eye-slash');
+      icon.classList.add('fa-eye');
+    }
+    if (btn) btn.setAttribute('aria-label', 'Show password');
+  }
+}
+window.togglePassVisibility = togglePassVisibility;
+
 /**
  * SITE.JS - Vanilla UI Interactions (Mobile Menu, Tabs, Password Toggle, etc.)
  * Strictly NO jQuery validation or form validation replacements.
@@ -23,7 +50,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // 2. Password Visibility Toggle
   var togglePassButtons = document.querySelectorAll('.js-toggle-password');
   togglePassButtons.forEach(function (btn) {
-    btn.addEventListener('click', function () {
+    btn.addEventListener('click', function (e) {
+      if (e) e.preventDefault();
       var targetAttr = this.getAttribute('data-target') || '';
       var ids = targetAttr.split(',').map(function(s){ return s.trim(); }).filter(Boolean);
       if (ids.length === 0) return;
@@ -42,16 +70,22 @@ document.addEventListener('DOMContentLoaded', function () {
       // swap icons by toggling class on button
       if (makeText) {
         this.classList.add('show-password');
+        this.setAttribute('aria-label', 'Hide password');
         var eye = this.querySelector('.icon-eye');
         var eyeOff = this.querySelector('.icon-eye-off');
         if (eye) eye.style.display = 'none';
-        if (eyeOff) eyeOff.style.display = 'inline-block';
+        if (eyeOff) eyeOff.style.display = 'block';
+        var label = this.querySelector('.toggle-label');
+        if (label) label.textContent = 'Hide Code';
       } else {
         this.classList.remove('show-password');
+        this.setAttribute('aria-label', 'Show password');
         var eye = this.querySelector('.icon-eye');
         var eyeOff = this.querySelector('.icon-eye-off');
-        if (eye) eye.style.display = 'inline-block';
+        if (eye) eye.style.display = 'block';
         if (eyeOff) eyeOff.style.display = 'none';
+        var label = this.querySelector('.toggle-label');
+        if (label) label.textContent = 'Show Code';
       }
     });
   });

@@ -5,9 +5,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - Tour Booking</title>
-    <link href="~/Styles/site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Styles/public.css" rel="stylesheet" type="text/css" />
-    <link href="~/Styles/responsive.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="~/Styles/site.css?v=20261013_v7" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/public.css?v=20261013_v7" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/responsive.css?v=20261013_v7" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+/* Disable Edge & IE native password reveal/clear buttons */
+::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="password"]::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="password"]::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="text"]::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="text"]::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input::-webkit-credentials-auto-fill-button { visibility: hidden !important; pointer-events: none !important; position: absolute !important; right: 0 !important; }
+</style>
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body class="auth-page-wrapper">
@@ -32,6 +45,28 @@
         </div>
     </form>
     <script src='<%= ResolveUrl("~/Scripts/site.js") %>'></script>
+    <script type="text/javascript">
+        function togglePassVisibility(inputId, btn) {
+            var input = document.getElementById(inputId);
+            if (!input) return;
+            var icon = btn ? btn.querySelector('i') : null;
+            if (input.type === 'password') {
+                input.type = 'text';
+                if (icon) {
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                }
+                if (btn) btn.setAttribute('aria-label', 'Hide password');
+            } else {
+                input.type = 'password';
+                if (icon) {
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+                if (btn) btn.setAttribute('aria-label', 'Show password');
+            }
+        }
+    </script>
     <asp:ContentPlaceHolder ID="scripts" runat="server"></asp:ContentPlaceHolder>
 </body>
 </html>

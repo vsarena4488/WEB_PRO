@@ -16,17 +16,23 @@
         <div class="form-group">
             <label class="form-label" for="<%= txtNewPassword.ClientID %>">New Password</label>
             <div class="input-with-icon">
-                <asp:TextBox ID="txtNewPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="Enter new password"></asp:TextBox>
-                <button type="button" class="input-icon-right js-toggle-password" data-target="<%= txtNewPassword.ClientID %>" aria-label="Toggle password">
-                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <asp:TextBox ID="txtNewPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="Enter new password (min. 6 chars)"></asp:TextBox>
+                <button type="button" class="input-icon-right" onclick="togglePassVisibility('<%= txtNewPassword.ClientID %>', this)" aria-label="Toggle password">
+                    <i class="far fa-eye"></i>
                 </button>
             </div>
             <asp:RequiredFieldValidator ID="rfvNewPassword" runat="server" ControlToValidate="txtNewPassword" ErrorMessage="New password is required" CssClass="val-error" Display="Dynamic" />
+            <asp:RegularExpressionValidator ID="revNewPassword" runat="server" ControlToValidate="txtNewPassword" ValidationExpression="^.{6,}$" ErrorMessage="Password must be at least 6 characters" CssClass="val-error" Display="Dynamic" />
         </div>
 
         <div class="form-group">
             <label class="form-label" for="<%= txtConfirmNewPassword.ClientID %>">Confirm New Password</label>
-            <asp:TextBox ID="txtConfirmNewPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="Confirm new password"></asp:TextBox>
+            <div class="input-with-icon">
+                <asp:TextBox ID="txtConfirmNewPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="Confirm new password"></asp:TextBox>
+                <button type="button" class="input-icon-right" onclick="togglePassVisibility('<%= txtConfirmNewPassword.ClientID %>', this)" aria-label="Toggle password">
+                    <i class="far fa-eye"></i>
+                </button>
+            </div>
             <asp:RequiredFieldValidator ID="rfvConfirmNewPassword" runat="server" ControlToValidate="txtConfirmNewPassword" ErrorMessage="Confirm your new password" CssClass="val-error" Display="Dynamic" />
             <asp:CompareValidator ID="cvConfirmPassword" runat="server" ControlToValidate="txtConfirmNewPassword" ControlToCompare="txtNewPassword" ErrorMessage="Passwords do not match" CssClass="val-error" Display="Dynamic" />
         </div>

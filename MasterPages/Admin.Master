@@ -5,10 +5,235 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - TourBook Admin</title>
-    <link href="~/Styles/site.css" rel="stylesheet" type="text/css" />
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="~/Styles/site.css?v=20261013_v7" rel="stylesheet" type="text/css" />
     <link href="~/Styles/user.css" rel="stylesheet" type="text/css" />
-    <link href="~/Styles/admin.css" rel="stylesheet" type="text/css" />
-    <link href="~/Styles/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/admin.css?v=20261013_v7" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/responsive.css?v=20261013_v7" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+
+/* Disable Edge & IE native password reveal/clear buttons */
+::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="password"]::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="password"]::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="text"]::-ms-reveal { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input[type="text"]::-ms-clear { display: none !important; width: 0 !important; height: 0 !important; pointer-events: none !important; }
+input::-webkit-credentials-auto-fill-button { visibility: hidden !important; pointer-events: none !important; position: absolute !important; right: 0 !important; }
+
+        :root {
+            --primary-blue: #2563eb;
+            --primary-hover: #1d4ed8;
+            --text-dark: #0f172a;
+            --text-gray: #64748b;
+            --sidebar-dark: #1e293b;
+            --page-bg: #f8fafc;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--page-bg);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-layout {
+            display: flex;
+            min-height: 100vh;
+            background-color: var(--page-bg);
+        }
+
+        /* --- Dark Admin Sidebar --- */
+        .app-sidebar {
+            width: 240px;
+            background-color: #1e293b !important;
+            border-right: 1px solid #1e293b !important;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-header {
+            height: 52px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-left: 0.5rem;
+        }
+
+        .brand-logo {
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.15rem;
+            text-decoration: none;
+        }
+
+        .brand-logo i {
+            color: #2563eb;
+            font-size: 1.35rem;
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-link {
+            color: #94a3b8 !important;
+            font-size: 0.88rem;
+            font-weight: 500;
+            padding: 0.65rem 0.9rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: background-color 0.15s, color 0.15s;
+        }
+
+        .sidebar-link i {
+            width: 18px;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #94a3b8 !important;
+        }
+
+        .sidebar-link:hover {
+            background-color: rgba(255, 255, 255, 0.06) !important;
+            color: #f1f5f9 !important;
+        }
+
+        .sidebar-link:hover i {
+            color: #f1f5f9 !important;
+        }
+
+        .sidebar-link.active {
+            background-color: #2563eb !important;
+            color: #ffffff !important;
+            font-weight: 600;
+        }
+
+        .sidebar-link.active i {
+            color: #ffffff !important;
+        }
+
+        .sidebar-divider {
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 1.25rem 0.5rem;
+        }
+
+        /* --- Admin Main Area & Top Bar --- */
+        .app-main {
+            margin-left: 240px;
+            padding: 1.5rem 2.25rem 2.5rem;
+            flex: 1;
+            min-width: 0;
+            min-height: 100vh;
+            background-color: var(--page-bg);
+        }
+
+        .app-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.85rem 1.5rem;
+            background-color: #ffffff;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .topbar-left i.fa-bars {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        .page-title {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .topbar-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 4px 12px 4px 6px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background-color: #ffffff;
+            transition: border-color 0.15s ease;
+        }
+
+        .topbar-user:hover {
+            border-color: #cbd5e1;
+        }
+
+        .topbar-user-avatar {
+            width: 28px;
+            height: 28px;
+            background-color: #e0e7ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 992px) {
+            .app-sidebar {
+                transform: translateX(-100%);
+                box-shadow: 2px 0 16px rgba(0, 0, 0, 0.25);
+            }
+            .app-sidebar.show {
+                transform: translateX(0);
+            }
+            .app-main {
+                margin-left: 0;
+                padding: 1.25rem;
+            }
+        }
+    </style>
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body>
@@ -18,53 +243,47 @@
             <aside id="appSidebar" class="app-sidebar">
                 <div class="sidebar-header">
                     <a href='<%= ResolveUrl("~/Admin/Dashboard.aspx") %>' class="brand-logo">
-                        <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19 6h-3V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H5c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-9-2h4v2h-4V4zm9 15H5V8h14v11z"/>
-                        </svg>
+                        <i class="fas fa-suitcase-rolling"></i>
                         <span>TourBook Admin</span>
                     </a>
                 </div>
 
                 <nav class="sidebar-nav">
                     <a href='<%= ResolveUrl("~/Admin/Dashboard.aspx") %>' class='sidebar-link <%= IsActive("Dashboard.aspx") %>'>
-                        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                        <i class="fas fa-th-large"></i>
                         <span>Dashboard</span>
                     </a>
                     <a href='<%= ResolveUrl("~/Admin/Tours.aspx") %>' class='sidebar-link <%= IsActive("Tours.aspx", "AddTour.aspx") %>'>
-                        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <i class="fas fa-search"></i>
                         <span>Tours</span>
                     </a>
                     <a href='<%= ResolveUrl("~/Admin/TourSchedules.aspx") %>' class='sidebar-link <%= IsActive("TourSchedules.aspx", "AddSchedule.aspx") %>'>
-                        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        <i class="fas fa-calendar-alt"></i>
                         <span>Tour Schedules</span>
                     </a>
                     <a href='<%= ResolveUrl("~/Admin/Bookings.aspx") %>' class='sidebar-link <%= IsActive("Bookings.aspx") %>'>
-                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        <i class="fas fa-bookmark"></i>
                         <span>Bookings</span>
                     </a>
                     <a href='<%= ResolveUrl("~/Admin/Users.aspx") %>' class='sidebar-link <%= IsActive("Users.aspx") %>'>
-                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        <i class="fas fa-user"></i>
                         <span>Users</span>
                     </a>
                     <a href='<%= ResolveUrl("~/Admin/Offers.aspx") %>' class='sidebar-link <%= IsActive("Offers.aspx", "AddOffer.aspx") %>'>
-                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                        <i class="fas fa-tags"></i>
                         <span>Offers</span>
                     </a>
                     <a href='<%= ResolveUrl("~/Admin/Reviews.aspx") %>' class='sidebar-link <%= IsActive("Reviews.aspx") %>'>
-                        <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <i class="fas fa-star"></i>
                         <span>Reviews</span>
                     </a>
-                    <a href='<%= ResolveUrl("~/Admin/Messages.aspx") %>' class='sidebar-link <%= IsActive("Messages.aspx") %>'>
-                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                        <span>Messages</span>
-                    </a>
                     <a href='<%= ResolveUrl("~/Admin/Profile.aspx") %>' class='sidebar-link <%= IsActive("Profile.aspx") %>'>
-                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <i class="fas fa-user-circle"></i>
                         <span>Admin Profile</span>
                     </a>
                     <div class="sidebar-divider"></div>
                     <a href='<%= ResolveUrl("~/Public/Login.aspx") %>' class="sidebar-link">
-                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                        <i class="fas fa-sign-out-alt"></i>
                         <span>Logout</span>
                     </a>
                 </nav>
@@ -74,21 +293,19 @@
             <div class="app-main">
                 <header class="app-topbar">
                     <div class="topbar-left">
-                        <button type="button" id="menuToggleBtn" class="menu-toggle-btn" aria-label="Toggle Menu">
-                            <svg class="icon-svg" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                        </button>
+                        <i class="fas fa-bars d-lg-none" id="menuToggleBtn" onclick="document.getElementById('appSidebar').classList.toggle('show');" style="cursor: pointer; margin-right: 8px;"></i>
                         <h1 class="page-title"><asp:ContentPlaceHolder ID="TitleContent" runat="server"><%: Page.Title %></asp:ContentPlaceHolder></h1>
                     </div>
                     <div class="topbar-right">
                         <a href='<%= ResolveUrl("~/Admin/Profile.aspx") %>' class="topbar-user">
-                            <span class="topbar-user-avatar">V</span>
+                            <div class="topbar-user-avatar"><i class="fas fa-user"></i></div>
                             <span>Hello, vishal</span>
-                            <svg class="icon-svg" style="width:14px; height:14px;" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            <i class="fas fa-chevron-down" style="font-size: 0.7rem; color: var(--text-gray);"></i>
                         </a>
                     </div>
                 </header>
 
-                <div class="content-body">
+                <div class="content-body" style="padding: 0;">
                     <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
                 </div>
             </div>

@@ -9,6 +9,7 @@ public partial class User_Profile : System.Web.UI.Page
 
     protected void btnSaveProfile_Click(object sender, EventArgs e)
     {
+        Page.Validate("vgProfile");
         if (Page.IsValid)
         {
             pnlProfileSuccess.Visible = true;
@@ -17,6 +18,7 @@ public partial class User_Profile : System.Web.UI.Page
 
     protected void btnSavePassword_Click(object sender, EventArgs e)
     {
+        Page.Validate("vgPassword");
         if (Page.IsValid)
         {
             pnlProfileSuccess.Visible = true;

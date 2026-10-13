@@ -29,6 +29,7 @@
                     <asp:TextBox ID="txtPromoCode" runat="server" CssClass="form-control" style="padding-left: 36px;" placeholder="e.g., SUMMER20"></asp:TextBox>
                 </div>
                 <asp:RequiredFieldValidator ID="rfvPromoCode" runat="server" ControlToValidate="txtPromoCode" ErrorMessage="Promo code name is required" CssClass="val-error" Display="Dynamic" />
+                <asp:RegularExpressionValidator ID="revPromoCode" runat="server" ControlToValidate="txtPromoCode" ValidationExpression="^[a-zA-Z0-9_-]{3,20}$" ErrorMessage="Promo code must be 3-20 characters (letters, numbers, dashes)" CssClass="val-error" Display="Dynamic" />
             </div>
             <div class="form-col form-group">
                 <label class="form-label">Discount Type <span class="required">*</span></label>
@@ -47,6 +48,7 @@
                     <asp:TextBox ID="txtDiscountValue" runat="server" CssClass="form-control" style="padding-left: 32px;" placeholder="e.g., 20"></asp:TextBox>
                 </div>
                 <asp:RequiredFieldValidator ID="rfvDiscountValue" runat="server" ControlToValidate="txtDiscountValue" ErrorMessage="Discount value is required" CssClass="val-error" Display="Dynamic" />
+                <asp:RegularExpressionValidator ID="revDiscountValue" runat="server" ControlToValidate="txtDiscountValue" ValidationExpression="^\d+(\.\d{1,2})?$" ErrorMessage="Enter a valid numeric discount" CssClass="val-error" Display="Dynamic" />
             </div>
             <div class="form-col form-group">
                 <label class="form-label">Applicable Tours <span class="required">*</span></label>
@@ -82,6 +84,7 @@
             <div class="form-col form-group">
                 <label class="form-label">Usage Limit</label>
                 <asp:TextBox ID="txtUsageLimit" runat="server" CssClass="form-control" placeholder="e.g., 100 (Leave blank for unlimited)"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="revUsageLimit" runat="server" ControlToValidate="txtUsageLimit" ValidationExpression="^[1-9]\d*$" ErrorMessage="Usage limit must be a positive integer" CssClass="val-error" Display="Dynamic" />
             </div>
             <div class="form-col form-group">
                 <label class="form-label">Status <span class="required">*</span></label>
@@ -93,7 +96,7 @@
         </div>
 
         <div class="form-group" style="margin-bottom: 24px;">
-            <label class="form-label">Upload Promotional Banner <span class="required">*</span></label>
+            <label class="form-label">Upload Promotional Banner</label>
             <div class="upload-dropzone">
                 <svg class="upload-dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
                 <div class="upload-dropzone-text">Click to upload or drag and drop</div>
