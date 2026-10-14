@@ -13,12 +13,13 @@
         <asp:Panel ID="pnlRegistered" runat="server" Visible="false" CssClass="badge badge-confirmed" style="padding:10px 14px; margin-bottom:16px; width:100%; justify-content:center;">
             Account created successfully! Please log in.
         </asp:Panel>
+        <asp:Label ID="lblLoginError" runat="server" CssClass="val-error" EnableViewState="false" style="display:block; margin-bottom:12px; text-align:center; font-weight:600;"></asp:Label>
 
         <div class="form-group">
-            <label class="form-label" for="<%= txtEmail.ClientID %>">Email Address</label>
-            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="Your Email"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email address is required" CssClass="val-error" Display="Dynamic" />
-            <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail" ValidationExpression="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" ErrorMessage="Enter a valid email" CssClass="val-error" Display="Dynamic" />
+            <label class="form-label" for="<%= txtEmail.ClientID %>">Email or Username</label>
+            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="Your Email or Username"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email address or username is required" CssClass="val-error" Display="Dynamic" />
+            <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail" ValidationExpression="^([\w-\.]+@([\w-]+\.)+[\w-]{2,4}|[a-zA-Z0-9_\.]{3,30})$" ErrorMessage="Enter a valid email or username" CssClass="val-error" Display="Dynamic" />
         </div>
 
         <div class="form-group">

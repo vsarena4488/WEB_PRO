@@ -24,9 +24,9 @@
                         </div>
                         <div class="search-field">
                             <asp:DropDownList ID="ddlTravelers" runat="server" CssClass="form-control">
-                                <asp:ListItem Text="Travelers" Value="" />
+                                <asp:ListItem Text="Travelers" Value="0" Selected="True" />
                                 <asp:ListItem Text="1 Traveler" Value="1" />
-                                <asp:ListItem Text="2 Travelers" Value="2" Selected="True" />
+                                <asp:ListItem Text="2 Travelers" Value="2"  />
                                 <asp:ListItem Text="3 Travelers" Value="3" />
                                 <asp:ListItem Text="4+ Travelers" Value="4" />
                             </asp:DropDownList>
@@ -54,7 +54,7 @@
                     <p class="tour-card-duration">3 Days | 2 Nights</p>
                     <div class="tour-card-bottom">
                         <span class="tour-card-price">8,999 /-</span>
-                        <a href='<%= ResolveUrl("~/User/TourDetails.aspx") %>' class="btn btn-outline btn-sm">View
+                        <a href='<%= ResolveUrl("~/Public/Login.aspx") %>' class="btn btn-outline btn-sm">View
                             Details</a>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                     <p class="tour-card-duration">4 Days | 3 Nights</p>
                     <div class="tour-card-bottom">
                         <span class="tour-card-price">12,999 /-</span>
-                        <a href='<%= ResolveUrl("~/User/TourDetails.aspx") %>' class="btn btn-outline btn-sm">View
+                        <a href='<%= ResolveUrl("~/Public/Login.aspx") %>' class="btn btn-outline btn-sm">View
                             Details</a>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                     <p class="tour-card-duration">5 Days | 4 Nights</p>
                     <div class="tour-card-bottom">
                         <span class="tour-card-price">15,999 /-</span>
-                        <a href='<%= ResolveUrl("~/User/TourDetails.aspx") %>' class="btn btn-outline btn-sm">View
+                        <a href='<%= ResolveUrl("~/Public/Login.aspx") %>' class="btn btn-outline btn-sm">View
                             Details</a>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
                     <p class="tour-card-duration">4 Days | 3 Nights</p>
                     <div class="tour-card-bottom">
                         <span class="tour-card-price">13,999 /-</span>
-                        <a href='<%= ResolveUrl("~/User/TourDetails.aspx") %>' class="btn btn-outline btn-sm">View
+                        <a href='<%= ResolveUrl("~/Public/Login.aspx") %>' class="btn btn-outline btn-sm">View
                             Details</a>
                     </div>
                 </div>

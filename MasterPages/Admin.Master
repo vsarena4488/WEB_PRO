@@ -11,10 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="~/Styles/site.css?v=20261013_v7" rel="stylesheet" type="text/css" />
-    <link href="~/Styles/user.css" rel="stylesheet" type="text/css" />
-    <link href="~/Styles/admin.css?v=20261013_v7" rel="stylesheet" type="text/css" />
-    <link href="~/Styles/responsive.css?v=20261013_v7" rel="stylesheet" type="text/css" />
+    <link runat="server" href="~/Styles/site.css?v=20261014_v2" rel="stylesheet" type="text/css" />
+    <link runat="server" href="~/Styles/admin.css?v=20261014_v2" rel="stylesheet" type="text/css" />
+    <link runat="server" href="~/Styles/responsive.css?v=20261014_v2" rel="stylesheet" type="text/css" />
 
     <style type="text/css">
 
@@ -220,6 +219,308 @@ input::-webkit-credentials-auto-fill-button { visibility: hidden !important; poi
             flex-shrink: 0;
         }
 
+        /* --- Embedded Admin Details Modal Styles --- */
+        .admin-modal-backdrop {
+            position: fixed !important;
+            inset: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            background: rgba(15, 23, 42, 0.65) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            z-index: 99999 !important;
+            display: none;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 20px !important;
+            box-sizing: border-box !important;
+            opacity: 0;
+            transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .admin-modal-backdrop.active {
+            display: flex !important;
+            opacity: 1 !important;
+        }
+
+        .admin-modal-window {
+            background: #ffffff !important;
+            border-radius: 18px !important;
+            width: 100% !important;
+            max-width: 660px !important;
+            max-height: 88vh !important;
+            display: flex !important;
+            flex-direction: column !important;
+            overflow: hidden !important;
+            box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.35), 0 0 0 1px rgba(226, 232, 240, 0.8) !important;
+            transform: scale(0.95) translateY(12px);
+            transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .admin-modal-backdrop.active .admin-modal-window {
+            transform: scale(1) translateY(0);
+        }
+
+        .admin-modal-header {
+            padding: 18px 24px !important;
+            border-bottom: 1px solid #f1f5f9 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            background-color: #ffffff !important;
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 10 !important;
+        }
+
+        .admin-modal-header-left {
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+        }
+
+        .admin-modal-title {
+            font-size: 1.15rem !important;
+            font-weight: 700 !important;
+            color: #0f172a !important;
+            margin: 0 !important;
+            line-height: 1.2 !important;
+        }
+
+        .admin-modal-subtitle {
+            font-size: 0.8rem !important;
+            color: #64748b !important;
+            margin-top: 2px !important;
+        }
+
+        .admin-modal-close-btn {
+            width: 36px !important;
+            height: 36px !important;
+            border-radius: 50% !important;
+            border: 1px solid #e2e8f0 !important;
+            background-color: #f8fafc !important;
+            color: #64748b !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 0.95rem !important;
+            cursor: pointer !important;
+            transition: all 0.15s ease !important;
+            outline: none !important;
+            padding: 0 !important;
+        }
+
+        .admin-modal-close-btn:hover {
+            background-color: #fee2e2 !important;
+            color: #ef4444 !important;
+            border-color: #fca5a5 !important;
+            transform: rotate(90deg);
+        }
+
+        .admin-modal-body {
+            padding: 22px 24px !important;
+            overflow-y: auto !important;
+            flex: 1 !important;
+        }
+
+        .admin-modal-hero {
+            position: relative !important;
+            width: 100% !important;
+            height: 200px !important;
+            border-radius: 12px !important;
+            overflow: hidden !important;
+            margin-bottom: 20px !important;
+            background-color: #f1f5f9 !important;
+        }
+
+        .admin-modal-hero img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            display: block !important;
+        }
+
+        .admin-modal-grid {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 12px !important;
+            margin-bottom: 20px !important;
+        }
+
+        @media (max-width: 540px) {
+            .admin-modal-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        .admin-modal-info-card {
+            background-color: #f8fafc !important;
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 10px !important;
+            padding: 12px 14px !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+        }
+
+        .admin-modal-info-icon {
+            width: 38px !important;
+            height: 38px !important;
+            border-radius: 8px !important;
+            background-color: #eff6ff !important;
+            color: #2563eb !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 1rem !important;
+            flex-shrink: 0 !important;
+        }
+
+        .admin-modal-info-label {
+            font-size: 0.72rem !important;
+            font-weight: 600 !important;
+            color: #64748b !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+            margin-bottom: 2px !important;
+        }
+
+        .admin-modal-info-val {
+            font-size: 0.92rem !important;
+            font-weight: 700 !important;
+            color: #0f172a !important;
+        }
+
+        .admin-modal-section-title {
+            font-size: 0.88rem !important;
+            font-weight: 700 !important;
+            color: #1e293b !important;
+            margin: 16px 0 8px 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+        }
+
+        .admin-modal-desc {
+            font-size: 0.88rem !important;
+            color: #475569 !important;
+            line-height: 1.6 !important;
+            background-color: #f8fafc !important;
+            padding: 14px !important;
+            border-radius: 10px !important;
+            border: 1px solid #f1f5f9 !important;
+            margin-bottom: 16px !important;
+        }
+
+        .admin-modal-inclusions {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 8px !important;
+            margin-bottom: 16px !important;
+        }
+
+        @media (max-width: 540px) {
+            .admin-modal-inclusions {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        .admin-modal-inc-item {
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            font-size: 0.82rem !important;
+            color: #334155 !important;
+            background-color: #ffffff !important;
+            padding: 8px 12px !important;
+            border-radius: 8px !important;
+            border: 1px solid #e2e8f0 !important;
+        }
+
+        .admin-modal-inc-item i.fa-check {
+            color: #10b981 !important;
+        }
+
+        .admin-modal-footer {
+            padding: 16px 24px !important;
+            border-top: 1px solid #f1f5f9 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-end !important;
+            gap: 12px !important;
+            background-color: #fafbfc !important;
+        }
+
+        /* Action button group & action-btn in admin tables */
+        .action-buttons-group {
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+        }
+
+        .action-btn {
+            width: 32px !important;
+            height: 32px !important;
+            border-radius: 6px !important;
+            background-color: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            color: #64748b !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            cursor: pointer !important;
+            transition: all 0.15s ease !important;
+            text-decoration: none !important;
+            font-size: 0.82rem !important;
+            padding: 0 !important;
+        }
+
+        .action-btn:hover {
+            color: #2563eb !important;
+            border-color: #2563eb !important;
+            background-color: #eff6ff !important;
+        }
+
+        .action-btn.action-btn-activate:hover {
+            color: #16a34a !important;
+            border-color: #16a34a !important;
+            background-color: #f0fdf4 !important;
+        }
+
+        .action-btn.action-btn-delete:hover {
+            color: #dc2626 !important;
+            border-color: #dc2626 !important;
+            background-color: #fef2f2 !important;
+        }
+
+        .status-badge-pending,
+        .badge-pending {
+            background-color: #fef3c7 !important;
+            color: #b45309 !important;
+        }
+
+        .status-badge-cancelled,
+        .badge-cancelled {
+            background-color: #fee2e2 !important;
+            color: #b91c1c !important;
+        }
+
+        .status-badge-completed,
+        .badge-confirmed {
+            background-color: #dcfce7 !important;
+            color: #15803d !important;
+        }
+
+        .status-badge-ongoing {
+            background-color: #dbeafe !important;
+            color: #1d4ed8 !important;
+        }
+
+        .status-badge-upcoming {
+            background-color: #f3e8ff !important;
+            color: #7e22ce !important;
+        }
+
         @media (max-width: 992px) {
             .app-sidebar {
                 transform: translateX(-100%);
@@ -311,6 +612,276 @@ input::-webkit-credentials-auto-fill-button { visibility: hidden !important; poi
             </div>
         </div>
     </form>
+
+    <!-- =========================================================================
+         GLOBAL ADMIN DETAILS POPUP MODAL
+         Strictly hidden by default (display: none !important)
+         ========================================================================= -->
+    <div id="adminDetailsModal" class="admin-modal-backdrop" style="display: none;" onclick="if(event.target === this) closeAdminDetailsModal();">
+        <div class="admin-modal-window" role="dialog" aria-modal="true" aria-labelledby="modalDetailTitle">
+            <div class="admin-modal-header">
+                <div class="admin-modal-header-left">
+                    <div>
+                        <h3 id="modalDetailTitle" class="admin-modal-title">Details</h3>
+                        <div id="modalDetailSubtitle" class="admin-modal-subtitle"></div>
+                    </div>
+                </div>
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <span id="modalDetailStatusBadge" class="status-pill status-active"><span class="status-dot"></span>Active</span>
+                    <button type="button" class="admin-modal-close-btn" onclick="closeAdminDetailsModal();" aria-label="Close modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="admin-modal-body">
+                <!-- Hero Image (Hidden by default unless image is provided) -->
+                <div id="modalHeroBox" class="admin-modal-hero" style="display: none;">
+                    <img id="modalHeroImg" src="" alt="Detail preview" />
+                </div>
+
+                <!-- Info Cards Grid -->
+                <div class="admin-modal-grid">
+                    <div class="admin-modal-info-card">
+                        <div id="modalIcon1" class="admin-modal-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <div id="modalLabel1" class="admin-modal-info-label">Destination</div>
+                            <div id="modalVal1" class="admin-modal-info-val">-</div>
+                        </div>
+                    </div>
+
+                    <div class="admin-modal-info-card">
+                        <div id="modalIcon2" class="admin-modal-info-icon"><i class="far fa-clock"></i></div>
+                        <div>
+                            <div id="modalLabel2" class="admin-modal-info-label">Duration</div>
+                            <div id="modalVal2" class="admin-modal-info-val">-</div>
+                        </div>
+                    </div>
+
+                    <div class="admin-modal-info-card">
+                        <div id="modalIcon3" class="admin-modal-info-icon"><i class="fas fa-tag"></i></div>
+                        <div>
+                            <div id="modalLabel3" class="admin-modal-info-label">Price</div>
+                            <div id="modalVal3" class="admin-modal-info-val">-</div>
+                        </div>
+                    </div>
+
+                    <div class="admin-modal-info-card">
+                        <div id="modalIcon4" class="admin-modal-info-icon"><i class="fas fa-compass"></i></div>
+                        <div>
+                            <div id="modalLabel4" class="admin-modal-info-label">Category / Type</div>
+                            <div id="modalVal4" class="admin-modal-info-val">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description / Overview Section -->
+                <div class="admin-modal-section-title">
+                    <i class="fas fa-info-circle text-primary"></i> <span id="modalDescTitle">Overview &amp; Information</span>
+                </div>
+                <div id="modalDetailOverview" class="admin-modal-desc">
+                </div>
+
+                <!-- Inclusions Section -->
+                <div id="modalInclusionsWrap" style="display: none;">
+                    <div class="admin-modal-section-title">
+                        <i class="fas fa-check-circle" style="color:#10b981;"></i> <span>Highlights &amp; Inclusions</span>
+                    </div>
+                    <div id="modalInclusionsList" class="admin-modal-inclusions">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeAdminDetailsModal();" style="border-radius:8px; padding:8px 18px;">
+                    Close
+                </button>
+                <a id="modalActionLink" href='<%= ResolveUrl("~/Admin/AddTour.aspx") %>' class="btn btn-primary" style="border-radius:8px; padding:8px 18px; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                    <i class="far fa-edit"></i> <span id="modalActionText">Edit Tour</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function openAdminDetailsModal(data) {
+            var modal = document.getElementById('adminDetailsModal');
+            if (!modal) return;
+
+            document.getElementById('modalDetailTitle').textContent = data.title || 'Details';
+            document.getElementById('modalDetailSubtitle').textContent = data.subtitle || '';
+
+            var statusBadge = document.getElementById('modalDetailStatusBadge');
+            if (statusBadge) {
+                var status = (data.status || 'Active').toLowerCase();
+                var pillClass = 'status-active';
+                if (status.indexOf('inactive') !== -1 || status.indexOf('cancel') !== -1 || status.indexOf('reject') !== -1) {
+                    pillClass = 'status-inactive status-badge-cancelled';
+                } else if (status.indexOf('pending') !== -1 || status.indexOf('upcoming') !== -1) {
+                    pillClass = 'status-badge-pending status-badge-upcoming';
+                } else if (status.indexOf('ongoing') !== -1) {
+                    pillClass = 'status-badge-ongoing';
+                } else if (status.indexOf('completed') !== -1) {
+                    pillClass = 'status-badge-completed';
+                }
+                statusBadge.className = 'status-pill ' + pillClass;
+                statusBadge.innerHTML = '<span class="status-dot"></span>' + (data.status || 'Active');
+            }
+
+            var heroBox = document.getElementById('modalHeroBox');
+            var heroImg = document.getElementById('modalHeroImg');
+            if (data.image) {
+                heroImg.src = data.image;
+                heroBox.style.display = 'block';
+            } else {
+                heroImg.src = '';
+                heroBox.style.display = 'none';
+            }
+
+            document.getElementById('modalLabel1').textContent = data.label1 || 'Destination';
+            document.getElementById('modalVal1').textContent = data.val1 || '-';
+            if (data.icon1) document.getElementById('modalIcon1').innerHTML = data.icon1;
+
+            document.getElementById('modalLabel2').textContent = data.label2 || 'Duration';
+            document.getElementById('modalVal2').textContent = data.val2 || '-';
+            if (data.icon2) document.getElementById('modalIcon2').innerHTML = data.icon2;
+
+            document.getElementById('modalLabel3').textContent = data.label3 || 'Price';
+            document.getElementById('modalVal3').textContent = data.val3 || '-';
+            if (data.icon3) document.getElementById('modalIcon3').innerHTML = data.icon3;
+
+            document.getElementById('modalLabel4').textContent = data.label4 || 'Category';
+            document.getElementById('modalVal4').textContent = data.val4 || '-';
+            if (data.icon4) document.getElementById('modalIcon4').innerHTML = data.icon4;
+
+            document.getElementById('modalDescTitle').textContent = data.descTitle || 'Overview & Information';
+            document.getElementById('modalDetailOverview').textContent = data.overview || 'No additional details available.';
+
+            var incWrap = document.getElementById('modalInclusionsWrap');
+            var incList = document.getElementById('modalInclusionsList');
+            incList.innerHTML = '';
+            if (data.inclusions && data.inclusions.length > 0) {
+                incWrap.style.display = 'block';
+                data.inclusions.forEach(function (item) {
+                    var el = document.createElement('div');
+                    el.className = 'admin-modal-inc-item';
+                    el.innerHTML = '<i class="fas fa-check"></i> <span>' + item + '</span>';
+                    incList.appendChild(el);
+                });
+            } else {
+                incWrap.style.display = 'none';
+            }
+
+            var actionBtn = document.getElementById('modalActionLink');
+            if (data.actionUrl) {
+                actionBtn.href = data.actionUrl;
+                document.getElementById('modalActionText').textContent = data.actionText || 'Edit';
+                actionBtn.style.display = 'inline-flex';
+            } else {
+                actionBtn.style.display = 'none';
+            }
+
+            modal.style.display = 'flex';
+            requestAnimationFrame(function () {
+                modal.classList.add('active');
+            });
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAdminDetailsModal() {
+            var modal = document.getElementById('adminDetailsModal');
+            if (modal) {
+                modal.classList.remove('active');
+                setTimeout(function () {
+                    if (!modal.classList.contains('active')) {
+                        modal.style.display = 'none';
+                    }
+                }, 260);
+                document.body.style.overflow = '';
+            }
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeAdminDetailsModal();
+            }
+        });
+
+        function openTourModalFromBtn(btn) {
+            var incStr = btn.getAttribute('data-inclusions') || '';
+            var incArr = incStr ? incStr.split('|') : [];
+
+            openAdminDetailsModal({
+                title: btn.getAttribute('data-title') || 'Tour Details',
+                subtitle: 'ID: ' + (btn.getAttribute('data-id') || ''),
+                status: btn.getAttribute('data-status') || 'Active',
+                image: btn.getAttribute('data-img') || '',
+                label1: btn.getAttribute('data-lbl1') || 'Destination',
+                val1: btn.getAttribute('data-val1') || btn.getAttribute('data-location') || '-',
+                icon1: '<i class="fas fa-map-marker-alt"></i>',
+                label2: btn.getAttribute('data-lbl2') || 'Duration',
+                val2: btn.getAttribute('data-val2') || btn.getAttribute('data-duration') || '-',
+                icon2: '<i class="far fa-clock"></i>',
+                label3: btn.getAttribute('data-lbl3') || 'Price',
+                val3: btn.getAttribute('data-val3') || btn.getAttribute('data-price') || '-',
+                icon3: '<i class="fas fa-tag"></i>',
+                label4: btn.getAttribute('data-lbl4') || 'Category',
+                val4: btn.getAttribute('data-val4') || btn.getAttribute('data-category') || '-',
+                icon4: '<i class="fas fa-compass"></i>',
+                descTitle: btn.getAttribute('data-desctitle') || 'Tour Overview',
+                overview: btn.getAttribute('data-overview') || 'Complete travel itinerary with luxury stays and sightseeing.',
+                inclusions: incArr,
+                actionUrl: btn.getAttribute('data-link') || '<%= ResolveUrl("~/Admin/AddTour.aspx") %>',
+                actionText: btn.getAttribute('data-actiontext') || 'Edit Tour'
+            });
+        }
+
+        // Automatic fallback interceptor for any legacy TourDetails.aspx link
+        document.addEventListener('click', function (e) {
+            var link = e.target.closest('a[href*="TourDetails.aspx"], a.action-btn[title*="View Details"], a.action-btn[title*="View Tour"]');
+            if (link) {
+                e.preventDefault();
+                var tr = link.closest('tr');
+                if (tr) {
+                    var tourName = tr.querySelector('.tour-name') ? tr.querySelector('.tour-name').textContent.trim() :
+                                   (tr.querySelector('td:nth-child(2)') ? tr.querySelector('td:nth-child(2)').textContent.trim() : 'Tour Package Details');
+                    var tourId = tr.querySelector('.tour-id') ? tr.querySelector('.tour-id').textContent.trim() :
+                                 (tr.querySelector('td:first-child') ? tr.querySelector('td:first-child').textContent.trim() : '');
+                    var dest = tr.querySelector('.text-dest') ? tr.querySelector('.text-dest').textContent.trim() :
+                               (tr.querySelector('td:nth-child(3)') ? tr.querySelector('td:nth-child(3)').textContent.trim() : 'India');
+                    var duration = tr.querySelector('.text-duration') ? tr.querySelector('.text-duration').textContent.trim() :
+                                   (tr.querySelector('td:nth-child(4)') ? tr.querySelector('td:nth-child(4)').textContent.trim() : '3-5 Days');
+                    var price = tr.querySelector('.text-price') ? tr.querySelector('.text-price').textContent.trim() :
+                                (tr.querySelector('td:nth-child(5)') ? tr.querySelector('td:nth-child(5)').textContent.trim() : '₹12,000');
+                    var statusEl = tr.querySelector('.status-pill');
+                    var statusText = statusEl ? statusEl.textContent.trim() : 'Active';
+                    var imgEl = tr.querySelector('img');
+                    var imgSrc = imgEl ? imgEl.src : '<%= ResolveUrl("~/Assets/images/goa-details.jpg") %>';
+
+                    openAdminDetailsModal({
+                        title: tourName,
+                        subtitle: tourId ? 'ID: ' + tourId : 'Details Overview',
+                        status: statusText,
+                        image: imgSrc,
+                        label1: 'Location / Tour',
+                        val1: dest || 'India',
+                        label2: 'Duration / Schedule',
+                        val2: duration || 'Flexible',
+                        label3: 'Price / Amount',
+                        val3: price || '₹12,000',
+                        label4: 'Status',
+                        val4: statusText,
+                        descTitle: 'Tour Overview & Highlights',
+                        overview: 'Complete itinerary, accommodation, sightseeing and transportation arranged by TourBook. Verified active tour package in the system.',
+                        inclusions: ['4-Star Accommodation Included', 'Daily Breakfast & Dinner', 'Private Sightseeing Transfers', 'Certified Local Tour Guide Support'],
+                        actionUrl: '<%= ResolveUrl("~/Admin/Tours.aspx") %>',
+                        actionText: 'View All Tours'
+                    });
+                }
+            }
+        });
+    </script>
     <script src='<%= ResolveUrl("~/Scripts/site.js") %>'></script>
 </body>
 </html>

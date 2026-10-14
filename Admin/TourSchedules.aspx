@@ -87,6 +87,27 @@
                         </td>
                         <td>
                             <div class="action-buttons-group">
+                                <button type="button" class="action-btn" title="View Schedule Details"
+                                    data-title="Goa Beach Schedule (SCH-001)"
+                                    data-id="SCH-001"
+                                    data-location="Goa Beach Vacation"
+                                    data-lbl1="Tour Package"
+                                    data-duration="01 Sep 2026 &ndash; 04 Sep 2026"
+                                    data-lbl2="Departure & Return"
+                                    data-price="12 / 20 Seats Booked"
+                                    data-lbl3="Capacity"
+                                    data-category="Guide: Ravi Kumar"
+                                    data-lbl4="Tour Lead"
+                                    data-status="Upcoming"
+                                    data-img='<%= ResolveUrl("~/Assets/images/goa-details.jpg") %>'
+                                    data-desctitle="Schedule Overview"
+                                    data-overview="Active departure batch for Goa Beach Vacation. Departure from Mumbai/Goa Airport. Currently 8 seats remain open for online bookings."
+                                    data-inclusions="Tour Leader Assigned (Ravi Kumar)|Luxury AC Volvo Coach Reserved|Hotel Check-in Vouchers Dispatched|Emergency Medical Kit Onboard"
+                                    data-link='<%= ResolveUrl("~/Admin/AddSchedule.aspx") %>'
+                                    data-actiontext="Edit Schedule"
+                                    onclick="openTourModalFromBtn(this)">
+                                    <i class="far fa-eye"></i>
+                                </button>
                                 <a href='<%= ResolveUrl("~/Admin/AddSchedule.aspx") %>' class="action-btn" title="Edit Schedule">
                                     <i class="far fa-edit"></i>
                                 </a>
@@ -116,6 +137,27 @@
                         </td>
                         <td>
                             <div class="action-buttons-group">
+                                <button type="button" class="action-btn" title="View Schedule Details"
+                                    data-title="Manali Snow Peaks Schedule (SCH-002)"
+                                    data-id="SCH-002"
+                                    data-location="Manali Snow Peaks"
+                                    data-lbl1="Tour Package"
+                                    data-duration="10 Aug 2026 &ndash; 15 Aug 2026"
+                                    data-lbl2="Departure & Return"
+                                    data-price="20 / 20 Seats (Sold Out)"
+                                    data-lbl3="Capacity"
+                                    data-category="Guide: Anil Sharma"
+                                    data-lbl4="Tour Lead"
+                                    data-status="Ongoing"
+                                    data-img='<%= ResolveUrl("~/Assets/images/manali.jpg") %>'
+                                    data-desctitle="Schedule Overview"
+                                    data-overview="Current live batch currently in transit through Solang Valley. All participants checked in successfully at resort. Next checkpoint: Rohtang Pass excursion tomorrow morning."
+                                    data-inclusions="Tour Leader Assigned (Anil Sharma)|Full House - 20 Travelers|Daily Attendance & Checkpoints Logged|Emergency Transport On Standby"
+                                    data-link='<%= ResolveUrl("~/Admin/AddSchedule.aspx") %>'
+                                    data-actiontext="Edit Schedule"
+                                    onclick="openTourModalFromBtn(this)">
+                                    <i class="far fa-eye"></i>
+                                </button>
                                 <a href='<%= ResolveUrl("~/Admin/AddSchedule.aspx") %>' class="action-btn" title="Edit Schedule">
                                     <i class="far fa-edit"></i>
                                 </a>
@@ -142,6 +184,27 @@
                         </td>
                         <td>
                             <div class="action-buttons-group">
+                                <button type="button" class="action-btn" title="View Schedule Details"
+                                    data-title="Kerala Backwaters Schedule (SCH-003)"
+                                    data-id="SCH-003"
+                                    data-location="Kerala Backwaters"
+                                    data-lbl1="Tour Package"
+                                    data-duration="10 Oct 2026 &ndash; 12 Oct 2026"
+                                    data-lbl2="Departure & Return"
+                                    data-price="0 / 15 Seats Booked"
+                                    data-lbl3="Capacity"
+                                    data-category="Guide: Pending Allocation"
+                                    data-lbl4="Tour Lead"
+                                    data-status="Upcoming"
+                                    data-img='<%= ResolveUrl("~/Assets/images/bali.jpg") %>'
+                                    data-desctitle="Schedule Overview"
+                                    data-overview="Upcoming weekend departure for Kerala Houseboat Tour. Bookings recently opened. Tour guide assignment pending administrative review."
+                                    data-inclusions="Houseboat Fleet Confirmed with Operator|Cochin Airport Reception Scheduled|Ayurvedic Center Time Slots Reserved|Guide Assignment Pending"
+                                    data-link='<%= ResolveUrl("~/Admin/AddSchedule.aspx") %>'
+                                    data-actiontext="Edit Schedule"
+                                    onclick="openTourModalFromBtn(this)">
+                                    <i class="far fa-eye"></i>
+                                </button>
                                 <a href='<%= ResolveUrl("~/Admin/AddSchedule.aspx") %>' class="action-btn" title="Edit Schedule">
                                     <i class="far fa-edit"></i>
                                 </a>
@@ -171,9 +234,27 @@
                         </td>
                         <td>
                             <div class="action-buttons-group">
-                                <a href='<%= ResolveUrl("~/User/TourDetails.aspx") %>' class="action-btn" title="View Tour">
+                                <button type="button" class="action-btn" title="View Schedule Details"
+                                    data-title="Rajasthan Heritage Schedule (SCH-004)"
+                                    data-id="SCH-004"
+                                    data-location="Rajasthan Heritage"
+                                    data-lbl1="Tour Package"
+                                    data-duration="05 Aug 2026 &ndash; 10 Aug 2026"
+                                    data-lbl2="Departure & Return"
+                                    data-price="25 / 25 Travelers"
+                                    data-lbl3="Capacity"
+                                    data-category="Guide: Suresh M."
+                                    data-lbl4="Tour Lead"
+                                    data-status="Completed"
+                                    data-img='<%= ResolveUrl("~/Assets/images/kashmir.jpg") %>'
+                                    data-desctitle="Schedule Overview"
+                                    data-overview="Successfully concluded royal Rajasthan tour. 25 travelers returned safely with positive ratings and zero incidents recorded."
+                                    data-inclusions="Tour Guide Report Filed (Suresh M.)|Guest Feedback: 4.9 / 5.0 Average|Hotel Accounts Settled|Final Trip Archive Saved"
+                                    data-link='<%= ResolveUrl("~/Admin/AddSchedule.aspx") %>'
+                                    data-actiontext="Edit Schedule"
+                                    onclick="openTourModalFromBtn(this)">
                                     <i class="far fa-eye"></i>
-                                </a>
+                                </button>
                             </div>
                         </td>
                     </tr>

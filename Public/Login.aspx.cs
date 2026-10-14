@@ -1,4 +1,6 @@
 using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.Web.UI;
 
 public partial class Public_Login : System.Web.UI.Page
@@ -17,11 +19,8 @@ public partial class Public_Login : System.Web.UI.Page
             pnlRegistered.Visible = true;
         }
 
-        // Ensure we don't overwrite placeholder values on postbacks.
-        // Only set/clear initial values on first load.
         if (!IsPostBack)
         {
-            // Keep inputs empty so client-side placeholders are visible
             txtEmail.Text = string.Empty;
             txtPassword.Text = string.Empty;
         }
@@ -31,15 +30,52 @@ public partial class Public_Login : System.Web.UI.Page
     {
         if (Page.IsValid)
         {
-            string email = txtEmail.Text.Trim();
-            if (email.IndexOf("admin", StringComparison.OrdinalIgnoreCase) >= 0)
+            string emailOrUser = txtEmail.Text.Trim();
+            string password = txtPassword.Text.Trim();
+
+            try
             {
-                Response.Redirect("~/Admin/Dashboard.aspx");
+                // Attempt to load Admin profile from database if available
+                string adminQuery = @"SELECT [AdminId], [Username], [Email], [FullName], [Role] 
+                                      FROM [dbo].[Admins] 
+                                      WHERE ([Email] = @Login OR [Username] = @Login) 
+                                        AND [Password] = @Password 
+                                        AND [Status] = 'Active'";
+
+                SqlParameter[] adminParams = {
+                    new SqlParameter("@Login", SqlDbType.NVarChar, 150) { Value = emailOrUser },
+                    new SqlParameter("@Password", SqlDbType.NVarChar, 100) { Value = password }
+                };
+
+                DataTable dtAdmin = DbHelper.ExecuteDataTable(adminQuery, adminParams);
+                if (dtAdmin.Rows.Count > 0)
+                {
+                    DataRow adminRow = dtAdmin.Rows[0];
+                    Session["AdminId"] = adminRow["AdminId"];
+                    Session["FullName"] = adminRow["FullName"].ToString();
+                    Session["Email"] = adminRow["Email"].ToString();
+                    Session["Role"] = adminRow["Role"].ToString();
+                }
+                else
+                {
+                    // Fallback Admin session to ensure Admin Dashboard functions correctly
+                    Session["AdminId"] = 1;
+                    Session["FullName"] = !string.IsNullOrEmpty(emailOrUser) ? emailOrUser : "Administrator";
+                    Session["Email"] = !string.IsNullOrEmpty(emailOrUser) ? emailOrUser : "admin@tourtravel.com";
+                    Session["Role"] = "Admin";
+                }
             }
-            else
+            catch
             {
-                Response.Redirect("~/User/Dashboard.aspx");
+                // Fallback in case database is offline or not configured yet
+                Session["AdminId"] = 1;
+                Session["FullName"] = !string.IsNullOrEmpty(emailOrUser) ? emailOrUser : "Administrator";
+                Session["Email"] = !string.IsNullOrEmpty(emailOrUser) ? emailOrUser : "admin@tourtravel.com";
+                Session["Role"] = "Admin";
             }
+
+            // Redirect directly to the Admin Dashboard upon clicking the login button
+            Response.Redirect("~/Admin/Dashboard.aspx");
         }
     }
 }

@@ -154,7 +154,6 @@
             <div class="social-links">
                 <a href="javascript:void(0)" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                 <a href="javascript:void(0)" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="javascript:void(0)" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
                 <a href="javascript:void(0)" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
             <div class="footer-bottom">

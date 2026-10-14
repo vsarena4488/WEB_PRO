@@ -91,9 +91,27 @@
                         </td>
                         <td>
                             <div class="action-buttons-group">
-                                <a href='<%= ResolveUrl("~/User/TourDetails.aspx") %>' class="action-btn" title="View Details">
+                                <button type="button" class="action-btn" title="View Details"
+                                    data-title="Booking TB10025 Details"
+                                    data-id="TB10025"
+                                    data-location="Goa Beach Vacation"
+                                    data-lbl1="Tour Package"
+                                    data-duration="15 Sep &ndash; 19 Sep 2026 (4 Nights)"
+                                    data-lbl2="Travel Dates"
+                                    data-price="₹24,000 (Paid via Card)"
+                                    data-lbl3="Payment"
+                                    data-category="Amit Patel (2 Guests)"
+                                    data-lbl4="Customer"
+                                    data-status="Confirmed"
+                                    data-img='<%= ResolveUrl("~/Assets/images/goa-details.jpg") %>'
+                                    data-desctitle="Booking Summary &amp; Customer Information"
+                                    data-overview="Customer: Amit Patel | Phone: +91 98765 43210 | Email: amit.patel@example.com | Package: Goa Beach Vacation (4 Days / 3 Nights) | Guests: 2 Adults | Payment Status: Completed via Credit Card"
+                                    data-inclusions="Confirmed 4-Star Resort Stay|Airport Private Pickup Included|North &amp; South Goa Tour Vouchers Issued|Meal Plan: Breakfast &amp; Dinner Buffet"
+                                    data-link='<%= ResolveUrl("~/Admin/Bookings.aspx") %>'
+                                    data-actiontext="Manage Bookings"
+                                    onclick="openTourModalFromBtn(this)">
                                     <i class="far fa-eye"></i>
-                                </a>
+                                </button>
                                 <button type="button" class="action-btn action-btn-delete" title="Cancel Booking" onclick="if(confirm('Cancel booking TB10025?')) this.closest('tr').remove();">
                                     <i class="fas fa-times"></i>
                                 </button>
@@ -124,6 +142,27 @@
                         </td>
                         <td>
                             <div class="action-buttons-group">
+                                <button type="button" class="action-btn" title="View Details"
+                                    data-title="Booking TB10026 Details"
+                                    data-id="TB10026"
+                                    data-location="Manali Snow Peaks"
+                                    data-lbl1="Tour Package"
+                                    data-duration="20 Sep &ndash; 24 Sep 2026 (4 Nights)"
+                                    data-lbl2="Travel Dates"
+                                    data-price="₹30,000 (Awaiting Payment)"
+                                    data-lbl3="Payment"
+                                    data-category="Amit Kumar (2 Guests)"
+                                    data-lbl4="Customer"
+                                    data-status="Pending"
+                                    data-img='<%= ResolveUrl("~/Assets/images/manali.jpg") %>'
+                                    data-desctitle="Booking Summary &amp; Customer Information"
+                                    data-overview="Customer: Amit Kumar | Phone: +91 87654 32109 | Email: amit.kumar@example.com | Package: Manali Snow Peaks Adventure | Guests: 2 Adults | Payment Status: Awaiting customer transaction verification"
+                                    data-inclusions="Hold Placed on Deluxe Chalet|Rohtang Pass Permit Pre-Reserved|Private Cab Transfer Allocated|Payment Link Dispatched to Customer"
+                                    data-link='<%= ResolveUrl("~/Admin/Bookings.aspx") %>'
+                                    data-actiontext="Manage Bookings"
+                                    onclick="openTourModalFromBtn(this)">
+                                    <i class="far fa-eye"></i>
+                                </button>
                                 <button type="button" class="action-btn action-btn-activate" title="Confirm Payment" onclick="alert('Booking approved and marked as Confirmed.');">
                                     <i class="fas fa-check"></i>
                                 </button>
@@ -157,9 +196,27 @@
                         </td>
                         <td>
                             <div class="action-buttons-group">
-                                <a href='<%= ResolveUrl("~/User/TourDetails.aspx") %>' class="action-btn" title="View Details">
+                                <button type="button" class="action-btn" title="View Details"
+                                    data-title="Booking TB10027 Details"
+                                    data-id="TB10027"
+                                    data-location="Kerala Backwaters"
+                                    data-lbl1="Tour Package"
+                                    data-duration="25 Sep &ndash; 27 Sep 2026 (2 Nights)"
+                                    data-lbl2="Travel Dates"
+                                    data-price="₹27,000 (Paid via UPI)"
+                                    data-lbl3="Payment"
+                                    data-category="Priya Patel (2 Guests)"
+                                    data-lbl4="Customer"
+                                    data-status="Confirmed"
+                                    data-img='<%= ResolveUrl("~/Assets/images/bali.jpg") %>'
+                                    data-desctitle="Booking Summary &amp; Customer Information"
+                                    data-overview="Customer: Priya Patel | Phone: +91 76543 21098 | Email: priya.patel@example.com | Package: Kerala Backwaters &amp; Hills | Guests: 2 Adults | Payment Status: Paid via GooglePay / UPI"
+                                    data-inclusions="Private Houseboat Booked|Authentic Keralite Meals Included|Cochin Airport Cab Pick &amp; Drop Confirmed|Ayurvedic Spa Coupons Dispatched"
+                                    data-link='<%= ResolveUrl("~/Admin/Bookings.aspx") %>'
+                                    data-actiontext="Manage Bookings"
+                                    onclick="openTourModalFromBtn(this)">
                                     <i class="far fa-eye"></i>
-                                </a>
+                                </button>
                                 <button type="button" class="action-btn action-btn-delete" title="Cancel Booking" onclick="if(confirm('Cancel booking TB10027?')) this.closest('tr').remove();">
                                     <i class="fas fa-times"></i>
                                 </button>
@@ -190,9 +247,27 @@
                         </td>
                         <td>
                             <div class="action-buttons-group">
-                                <a href='<%= ResolveUrl("~/User/TourDetails.aspx") %>' class="action-btn" title="View Details">
+                                <button type="button" class="action-btn" title="View Details"
+                                    data-title="Booking TB10028 Details"
+                                    data-id="TB10028"
+                                    data-location="Rajasthan Heritage"
+                                    data-lbl1="Tour Package"
+                                    data-duration="01 Oct &ndash; 06 Oct 2026 (5 Nights)"
+                                    data-lbl2="Travel Dates"
+                                    data-price="₹88,000 (Refunded)"
+                                    data-lbl3="Payment"
+                                    data-category="Vikram Singh (4 Guests)"
+                                    data-lbl4="Customer"
+                                    data-status="Cancelled"
+                                    data-img='<%= ResolveUrl("~/Assets/images/kashmir.jpg") %>'
+                                    data-desctitle="Booking Summary &amp; Cancellation Information"
+                                    data-overview="Customer: Vikram Singh | Phone: +91 65432 10987 | Email: vikram.singh@example.com | Package: Rajasthan Royal Heritage Tour | Guests: 4 Adults | Status: Cancelled by customer due to personal emergency. 100% refund processed."
+                                    data-inclusions="Refund Transaction Reference: TXN-998822|Heritage Haveli Booking Released|SUV Chauffeur Allocation Cancelled|Customer Cancellation Receipt Issued"
+                                    data-link='<%= ResolveUrl("~/Admin/Bookings.aspx") %>'
+                                    data-actiontext="Manage Bookings"
+                                    onclick="openTourModalFromBtn(this)">
                                     <i class="far fa-eye"></i>
-                                </a>
+                                </button>
                             </div>
                         </td>
                     </tr>
